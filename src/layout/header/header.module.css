@@ -1,3 +1,8 @@
+.container {
+  background-color: #467590;
+  display: flex;
+}
+
 .color {
   color: red;
 }

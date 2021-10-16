@@ -3,7 +3,9 @@ import styles from './footer.module.css';
 
 function Footer() {
   return (
-    <footer>Ecommerce created during Wizeline’s Academy React Bootcamp</footer>
+    <footer className={styles.container}>
+      <p>Ecommerce created during Wizeline’s Academy React Bootcamp</p>
+    </footer>
   );
 }
 
