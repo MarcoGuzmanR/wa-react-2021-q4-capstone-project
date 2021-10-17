@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoryCard from '../categoryCard';
 import styles from './productCategories.module.css';
+import propTypes from 'prop-types';
 
 function ProductCategories({ categoriesList }) {
   return (
@@ -14,5 +15,9 @@ function ProductCategories({ categoriesList }) {
     </div>
   );
 }
+
+ProductCategories.propTypes = {
+  categoriesList: propTypes.array.isRequired
+};
 
 export default ProductCategories;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './categoryCard.module.css'
+import propTypes from 'prop-types';
 
 function CategoryCard({ category }) {
   const { data } = category;
@@ -18,5 +19,22 @@ function CategoryCard({ category }) {
     </div>
   );
 }
+
+CategoryCard.propTypes = {
+  category: propTypes.shape({
+    data: propTypes.shape({
+      name: propTypes.string.isRequired,
+      href: propTypes.string,
+      main_image: propTypes.shape({
+        alt: propTypes.string,
+        dimensions: propTypes.shape({
+          height: propTypes.number,
+          width: propTypes.number
+        }),
+        url: propTypes.string.isRequired,
+      })
+    })
+  })
+};
 
 export default CategoryCard;

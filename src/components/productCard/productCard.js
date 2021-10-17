@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './productCard.module.css'
+import propTypes from 'prop-types';
 
 function ProductCard({ product }) {
   const { data } = product;
@@ -15,12 +16,33 @@ function ProductCard({ product }) {
           width={mainimage.dimensions.width / 3 } />
         <h3>{data.name}</h3>
       </a>
-      <div className={styles['details']}>
+      <div className={styles.details}>
         <p className={styles.category}>{data.category.slug}</p>
         <p>{data.price}</p>
       </div>
     </div>
   );
 }
+
+ProductCard.propTypes = {
+  product: propTypes.shape({
+    data: propTypes.shape({
+      name: propTypes.string.isRequired,
+      href: propTypes.string,
+      mainimage: propTypes.shape({
+        alt: propTypes.string,
+        dimensions: propTypes.shape({
+          height: propTypes.number,
+          width: propTypes.number
+        }),
+        url: propTypes.string.isRequired,
+      }),
+      category: propTypes.shape({
+        slug: propTypes.string,
+      }),
+      price: propTypes.number
+    })
+  })
+};
 
 export default ProductCard;

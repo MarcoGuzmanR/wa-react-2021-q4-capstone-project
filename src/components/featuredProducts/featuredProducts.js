@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from '../productCard/productCard';
 import styles from './featuredProducts.module.css';
+import propTypes from 'prop-types';
 
 function FeaturedProducts({ productsList }) {
   return (
@@ -14,5 +15,9 @@ function FeaturedProducts({ productsList }) {
     </div>
   );
 }
+
+FeaturedProducts.propTypes = {
+  productsList: propTypes.array.isRequired
+};
 
 export default FeaturedProducts;
