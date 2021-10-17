@@ -1,11 +1,18 @@
 import React from 'react';
 import styles from './home.module.css';
+import BannerSlider from '../../components/bannerSlider';
+import ProductCategories from '../../components/productCategories';
+import bannersRawData from '../../mocks/en-us/featured-banners.json';
+import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
 
 function Home() {
+  const { results: mockedBanners } = bannersRawData;
+  const { results: mockedCategories } = productCategoriesRawData;
+
   return (
     <main className={styles['main-container']}>
-      <div>Here are for the slider</div>
-      <div>Here are for the product categories</div>
+      <BannerSlider bannersList={mockedBanners} />
+      <ProductCategories categoriesList={mockedCategories} />
       <div>Here are for the featured products</div>
     </main>
   );

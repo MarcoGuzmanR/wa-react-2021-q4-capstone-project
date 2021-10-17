@@ -1,0 +1,10 @@
+.container {
+  padding: 2% 4%;
+  text-align: center;
+}
+
+.categories__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

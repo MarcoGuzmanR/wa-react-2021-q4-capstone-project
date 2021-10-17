@@ -3,8 +3,10 @@ import styles from './header.module.css';
 
 function Header() {
   return (
-    <header className={styles.container}>
-      <h2 className={styles.color}>Logo</h2>
+    <div className={styles.container}>
+      <header>
+        <h2 className={styles.color}>BestHome</h2>
+      </header>
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
@@ -18,7 +20,7 @@ function Header() {
           <input type="submit" value="Search" />
         </form>
       </div>
-    </header>
+    </div>
   );
 }
 
