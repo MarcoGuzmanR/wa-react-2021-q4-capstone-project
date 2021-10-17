@@ -1,0 +1,7 @@
+.container {
+  cursor: pointer;
+}
+
+.container:hover {
+  opacity: 0.7;
+}
