@@ -1,0 +1,14 @@
+.container {
+  padding: 2% 4%;
+  text-align: center;
+}
+
+.featured-products__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, 400px); */
+}

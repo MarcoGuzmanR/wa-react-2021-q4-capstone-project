@@ -1,0 +1,19 @@
+.category {
+  text-transform: capitalize;
+}
+
+.container {
+  cursor: pointer;
+  height: auto;
+  margin: 20px;
+  width: 20%;
+}
+
+.container:hover {
+  opacity: 0.7;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
