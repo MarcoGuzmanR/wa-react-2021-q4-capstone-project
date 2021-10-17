@@ -20,10 +20,18 @@ function Header() {
           <img src={cartIcon} alt="Shopping Cart" />
         </div>
       </div>
-      <div>
+      <div className={styles['container__search']}>
         <form>
-          <input type="search" placeholder="Search" />
-          <input type="submit" value="Search" />
+          <input
+            className={styles['search-product']}
+            type="search"
+            placeholder="Search products"
+          />
+          <input
+            className={styles['btn-submit']}
+            type="submit"
+            value="Go"
+          />
         </form>
       </div>
     </div>
