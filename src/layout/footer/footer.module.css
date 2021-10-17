@@ -1,4 +1,9 @@
 .container {
-  background-color: #467590;
+  background-color: #2b4757;
+  padding: 10px;
   text-align: center;
+}
+
+.container p {
+  font-size: 1.3rem;
 }

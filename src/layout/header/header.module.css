@@ -1,8 +1,25 @@
 .container {
-  background-color: #467590;
+  background-color: #2b4757;
+}
+
+.cart-container {
+  margin-right: 4%;
+}
+
+.container__menu {
+  align-items: center;
   display: flex;
 }
 
-.color {
+.logo__name-container, .cart-container {
+  margin-left: 4%;
+}
+
+.logo__name {
   color: #eaf5d4;
+  font-family: fantasy;
+}
+
+.nav-container {
+  flex: 1;
 }

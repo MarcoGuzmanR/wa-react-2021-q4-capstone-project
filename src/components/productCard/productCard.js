@@ -17,8 +17,10 @@ function ProductCard({ product }) {
         <h3>{data.name}</h3>
       </a>
       <div className={styles.details}>
-        <p className={styles.category}>{data.category.slug}</p>
-        <p>{data.price}</p>
+        <p className={styles.category}>
+          <b>{data.category.slug}</b>
+        </p>
+        <p><b>${data.price}</b></p>
       </div>
     </div>
   );
