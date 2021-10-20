@@ -1,12 +1,12 @@
 import React from 'react';
 import ProductCard from '../productCard/productCard';
-import styles from './featuredProducts.module.css';
+import styles from './productsGrid.module.css';
 import propTypes from 'prop-types';
 
-function FeaturedProducts({ productsList }) {
+function ProductsGrid({ title, productsList }) {
   return (
     <div className={styles.container}>
-      <h2>Featured Products</h2>
+      <h2>{title}</h2>
       <div className={styles['featured-products__grid']}>
         {productsList.map((product) => (
           <ProductCard key={product.id} product={product} />
@@ -16,8 +16,9 @@ function FeaturedProducts({ productsList }) {
   );
 }
 
-FeaturedProducts.propTypes = {
-  productsList: propTypes.array.isRequired
+ProductsGrid.propTypes = {
+  productsList: propTypes.array.isRequired,
+  title: propTypes.string.isRequired
 };
 
-export default FeaturedProducts;
+export default ProductsGrid;

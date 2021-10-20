@@ -9,11 +9,11 @@ function Header({ setCurrentPage }) {
   }
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <div className={styles['container__menu']}>
-        <header className={styles['logo__name-container']} onClick={handleSetCurrentPage}>
+        <div className={styles['logo__name-container']} onClick={handleSetCurrentPage}>
           <h2 className={styles['logo__name']}>BestHome</h2>
-        </header>
+        </div>
         <nav className={styles['nav-container']}>
           <ul>
             <li><a href="/" onClick={handleSetCurrentPage}>Home</a></li>
@@ -38,7 +38,7 @@ function Header({ setCurrentPage }) {
           />
         </form>
       </div>
-    </div>
+    </header>
   );
 }
 

@@ -10,14 +10,14 @@ function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
 
   return (
-    <div className="app">
+    <main className="app">
       <Header setCurrentPage={setCurrentPage} />
       {currentPage === 'home' ?
         <Home setCurrentPage={setCurrentPage} /> :
         <ProductList />
       }
       <Footer />
-    </div>
+    </main>
   );
 }
 
