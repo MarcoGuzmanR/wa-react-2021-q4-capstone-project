@@ -10,13 +10,13 @@ import bannersRawData from '../../mocks/en-us/featured-banners.json';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
 import featuredProductsRawData from '../../mocks/en-us/featured-products.json';
 
-function Home({ setIsHomePage }) {
+function Home({ setCurrentPage }) {
   const { results: mockedBanners }    = bannersRawData;
   const { results: mockedCategories } = productCategoriesRawData;
   const { results: mockedProducts }   = featuredProductsRawData;
 
-  function handleHomePageToggle() {
-    setIsHomePage(prevValue => !prevValue);
+  function handleSetCurrentPage() {
+    setCurrentPage('productList');
   }
 
   return (
@@ -25,7 +25,7 @@ function Home({ setIsHomePage }) {
       <ProductCategories categoriesList={mockedCategories} />
       <FeaturedProducts productsList={mockedProducts} />
       <div className={styles['view-products__container']}>
-        <button className="btn-secondary" type="button" onClick={handleHomePageToggle}>
+        <button className="btn-secondary" type="button" onClick={handleSetCurrentPage}>
           View all products
         </button>
       </div>
@@ -34,7 +34,7 @@ function Home({ setIsHomePage }) {
 }
 
 Home.propTypes = {
-  setIsHomePage: propTypes.func.isRequired,
+  setCurrentPage: propTypes.func.isRequired,
 };
 
 export default Home;
