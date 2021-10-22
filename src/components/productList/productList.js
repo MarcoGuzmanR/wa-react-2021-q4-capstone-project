@@ -4,39 +4,49 @@ import ProductsGrid from '../productsGrid';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
 import productsRawData from '../../mocks/en-us/products.json';
 
+function getFilterIds(filters) {
+  return filters.map(filter => filter.id);
+}
+
 function ProductList() {
   const { results: mockedCategories } = productCategoriesRawData;
-  const categoryFilters = mockedCategories.map((category) => {
-    return {
-      id: category.id,
-      name: category.data.name
-    }
-  });
-
   const { results: mockedProducts } = productsRawData;
 
   const [products, setProducts] = React.useState(mockedProducts);
+  const [categoryFilters, setCategoryFilters] = React.useState(() => {
+    return mockedCategories.map((category) => {
+      return {
+        id: category.id,
+        name: category.data.name,
+        activeFilter: false
+      }
+    });
+  });
   const [filters, setFilters] = React.useState([]);
 
   function handleFilterChange(filter) {
+    setCategoryFilters(prevFilters => {
+      return prevFilters.map((prevFilter) => {
+        return prevFilter.id === filter.id ?
+          { ...prevFilter, activeFilter: !prevFilter.activeFilter } : prevFilter;
+      });
+    });
+
     setFilters(prevFilters => {
-      const filterApplied = prevFilters.find(prevFilter => prevFilter.id === filter.id);
-
-      if (filterApplied) {
-        return prevFilters.filter(prevFilter => prevFilter.id !== filter.id);
-      }
-
-      return [...prevFilters, filter];
+      const filterApplied = prevFilters.filter(prevFilter => prevFilter.id === filter.id);
+      return filterApplied.length ?
+        prevFilters.filter(prevFilter => prevFilter.id !== filter.id) : [...prevFilters, filter];
     });
   }
 
   React.useEffect(() => {
-    const filterIds = filters.map(filter => filter.id);
-    const filteredProducts = mockedProducts.filter((product) => {
-      return filterIds.includes(product.data.category.id);
-    });
+    const filterIds = getFilterIds(filters);
 
     if (filterIds.length) {
+      const filteredProducts = mockedProducts.filter((product) => {
+        return filterIds.includes(product.data.category.id);
+      });
+
       return setProducts(filteredProducts);
     }
 
@@ -46,15 +56,19 @@ function ProductList() {
   return (
     <div className={styles.container}>
       <aside>
-        {categoryFilters.map((filter) => (
-          <div key={filter.id} className={styles['filter-container']}>
+        <div className={styles['filter-container']}>
+          {categoryFilters.map((filter) => (
             <button
-              className="btn-secondary"
+              key={filter.id}
+              className={
+                filter.activeFilter ?
+                `${styles.btn} ${styles['filter--active']}` :
+                `${styles.btn} ${styles['filter--inactive']}` }
               onClick={() => handleFilterChange(filter)}>
               {filter.name}
             </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </aside>
       <section>
         <ProductsGrid title="Products" productsList={products} />
