@@ -5,17 +5,19 @@ import CategoryFilters from '../categoryFilters';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
 import productsRawData from '../../mocks/en-us/products.json';
 
-function getFilterIds(filters) {
-  return filters.map(filter => filter.id);
+function getFilteredCategoryIds(categoryFilters) {
+  const filtersApplied =
+    categoryFilters.filter(filter => filter.activeFilter === true);
+
+  return filtersApplied.map(filter => filter.id);
 }
 
 function ProductList() {
   const { results: mockedCategories } = productCategoriesRawData;
   const { results: mockedProducts } = productsRawData;
 
-  const [products, setProducts] = React.useState(mockedProducts);
-  const [filters, setFilters] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [products, setProducts] = React.useState(mockedProducts);
   const [categoryFilters, setCategoryFilters] = React.useState(() => {
     return mockedCategories.map((category) => {
       return {
@@ -35,18 +37,18 @@ function ProductList() {
   }, []);
 
   React.useEffect(() => {
-    const filterIds = getFilterIds(filters);
+    const filterCategoryIds = getFilteredCategoryIds(categoryFilters);
 
-    if (filterIds.length) {
+    if (filterCategoryIds.length) {
       const filteredProducts = mockedProducts.filter((product) => {
-        return filterIds.includes(product.data.category.id);
+        return filterCategoryIds.includes(product.data.category.id);
       });
 
       return setProducts(filteredProducts);
     }
 
     setProducts(mockedProducts);
-  }, [filters, mockedProducts]);
+  }, [categoryFilters, mockedProducts]);
 
   return (
     <div className={styles.container}>
@@ -54,7 +56,6 @@ function ProductList() {
         <CategoryFilters
           categoryFilters={categoryFilters}
           setCategoryFilters={setCategoryFilters}
-          setFilters={setFilters}
         />
       </aside>
       <section>

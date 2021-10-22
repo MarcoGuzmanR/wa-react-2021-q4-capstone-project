@@ -6,7 +6,6 @@ function CategoryFilters(props) {
   const {
       categoryFilters,
       setCategoryFilters,
-      setFilters
   } = props;
 
   function handleFilterChange(filter) {
@@ -15,12 +14,6 @@ function CategoryFilters(props) {
         return prevFilter.id === filter.id ?
           { ...prevFilter, activeFilter: !prevFilter.activeFilter } : prevFilter;
       });
-    });
-
-    setFilters(prevFilters => {
-      const filterApplied = prevFilters.filter(prevFilter => prevFilter.id === filter.id);
-      return filterApplied.length ?
-        prevFilters.filter(prevFilter => prevFilter.id !== filter.id) : [...prevFilters, filter];
     });
   }
 
@@ -32,8 +25,8 @@ function CategoryFilters(props) {
           key={filter.id}
           className={
             filter.activeFilter ?
-            `${styles['btn-filter']} ${styles['filter--active']}` :
-            `${styles['btn-filter']} ${styles['filter--inactive']}` }
+            `btn-filter ${styles['filter--active']}` :
+            `btn-filter ${styles['filter--inactive']}` }
           onClick={() => handleFilterChange(filter)}>
           {filter.name}
         </button>
@@ -45,7 +38,6 @@ function CategoryFilters(props) {
 CategoryFilters.propTypes = {
   categoryFilters: propTypes.array.isRequired,
   setCategoryFilters: propTypes.func.isRequired,
-  setFilters: propTypes.func.isRequired,
 };
 
 export default CategoryFilters;
