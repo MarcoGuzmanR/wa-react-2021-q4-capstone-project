@@ -57,13 +57,14 @@ function ProductList() {
     <div className={styles.container}>
       <aside>
         <div className={styles['filter-container']}>
+          <h3>Filter by category</h3>
           {categoryFilters.map((filter) => (
             <button
               key={filter.id}
               className={
                 filter.activeFilter ?
-                `${styles.btn} ${styles['filter--active']}` :
-                `${styles.btn} ${styles['filter--inactive']}` }
+                `${styles['btn-filter']} ${styles['filter--active']}` :
+                `${styles['btn-filter']} ${styles['filter--inactive']}` }
               onClick={() => handleFilterChange(filter)}>
               {filter.name}
             </button>
