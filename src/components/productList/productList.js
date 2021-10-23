@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './productList.module.css';
 import ProductsGrid from '../productsGrid';
 import CategoryFilters from '../categoryFilters';
+import LoaderSpinner from '../common/loaderSpinner';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
 import productsRawData from '../../mocks/en-us/products.json';
 
@@ -56,11 +57,12 @@ function ProductList() {
         <CategoryFilters
           categoryFilters={categoryFilters}
           setCategoryFilters={setCategoryFilters}
+          isLoadingProducts={isLoading}
         />
       </aside>
       <section>
         {isLoading ?
-          <h3>Loading Products</h3> :
+          <LoaderSpinner title="Products" /> :
           <ProductsGrid title="Products" productsList={products} />
         }
       </section>

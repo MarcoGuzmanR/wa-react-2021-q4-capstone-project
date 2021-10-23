@@ -6,6 +6,7 @@ function CategoryFilters(props) {
   const {
       categoryFilters,
       setCategoryFilters,
+      isLoadingProducts
   } = props;
 
   function handleFilterChange(filter) {
@@ -27,6 +28,7 @@ function CategoryFilters(props) {
             filter.activeFilter ?
             `btn-filter ${styles['filter--active']}` :
             `btn-filter ${styles['filter--inactive']}` }
+          disabled={isLoadingProducts}
           onClick={() => handleFilterChange(filter)}>
           {filter.name}
         </button>
@@ -38,6 +40,7 @@ function CategoryFilters(props) {
 CategoryFilters.propTypes = {
   categoryFilters: propTypes.array.isRequired,
   setCategoryFilters: propTypes.func.isRequired,
+  isLoadingProducts: propTypes.bool
 };
 
 export default CategoryFilters;
