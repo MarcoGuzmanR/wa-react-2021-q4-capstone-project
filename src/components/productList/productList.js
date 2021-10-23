@@ -3,6 +3,7 @@ import styles from './productList.module.css';
 import ProductsGrid from '../productsGrid';
 import CategoryFilters from '../categoryFilters';
 import LoaderSpinner from '../common/loaderSpinner';
+import Pagination from '../common/pagination';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
 import productsRawData from '../../mocks/en-us/products.json';
 
@@ -63,7 +64,10 @@ function ProductList() {
       <section>
         {isLoading ?
           <LoaderSpinner title="Products" /> :
-          <ProductsGrid title="Products" productsList={products} />
+          <React.Fragment>
+            <ProductsGrid title="Products" productsList={products} />
+            <Pagination />
+          </React.Fragment>
         }
       </section>
     </div>
