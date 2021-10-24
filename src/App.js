@@ -7,13 +7,13 @@ import Footer from './layout/footer';
 import ProductList from './components/productList';
 
 function App() {
-  const [currentPage, setCurrentPage] = React.useState('home');
+  const [isHomePage, setIsHomePage] = React.useState(true);
 
   return (
     <main className="app">
-      <Header setCurrentPage={setCurrentPage} />
-      {currentPage === 'home' ?
-        <Home setCurrentPage={setCurrentPage} /> :
+      <Header setIsHomePage={setIsHomePage} />
+      {isHomePage ?
+        <Home setIsHomePage={setIsHomePage} /> :
         <ProductList />
       }
       <Footer />

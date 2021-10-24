@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from '../productCard/productCard';
+import Pagination from '../common/pagination';
 import styles from './productsGrid.module.css';
 import propTypes from 'prop-types';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
@@ -28,6 +29,7 @@ function ProductsGrid({ title, productsList }) {
             categoriesMap={categoriesMap} />
         ))}
       </div>
+      <Pagination />
     </div>
   );
 }
