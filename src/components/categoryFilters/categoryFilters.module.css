@@ -1,0 +1,14 @@
+.container {
+  padding: 10% 5%;
+  text-align: center;
+}
+
+.filter--active {
+  background-color: #2b4757;
+  color: #f1f4f6;
+}
+
+.filter--inactive {
+  background-color: #daf1c4;
+  color: #467590;
+}

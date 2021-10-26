@@ -1,0 +1,13 @@
+.container {
+  background-color: #467590;
+  display: flex;
+}
+
+.container aside {
+  flex: 1;
+}
+
+.container section {
+  flex: 5;
+  text-align: center;
+}

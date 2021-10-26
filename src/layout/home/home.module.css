@@ -1,4 +1,8 @@
-.main-container {
+.main__container {
   background-color: #467590;
   padding-bottom: 2%;
+}
+
+.view-products__container {
+  text-align: center;
 }

@@ -4,13 +4,20 @@ import Header from './layout/header';
 import Home from './layout/home';
 import Footer from './layout/footer';
 
+import ProductList from './components/productList';
+
 function App() {
+  const [isHomePage, setIsHomePage] = React.useState(true);
+
   return (
-    <div className="app">
-      <Header />
-      <Home />
+    <main className="app">
+      <Header setIsHomePage={setIsHomePage} />
+      {isHomePage ?
+        <Home setIsHomePage={setIsHomePage} /> :
+        <ProductList />
+      }
       <Footer />
-    </div>
+    </main>
   );
 }
 
