@@ -5,13 +5,14 @@ import propTypes from 'prop-types';
 import BannerSlider from '../../components/bannerSlider';
 import ProductCategories from '../../components/productCategories';
 import FeaturedProducts from '../../components/productsGrid';
+import LoaderSpinner from '../../components/common/loaderSpinner';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
 function Home() {
   const propsCall = {
     documentType: 'product',
-    documentTags: ["Featured"],
+    documentTags: ['Featured'],
     pageSize: 16
   };
 
@@ -31,7 +32,7 @@ function Home() {
 
       {!isLoading && featuredProducts ?
         <FeaturedProducts title="Featured Products" productsList={featuredProducts} /> :
-        <div>Loading...</div>
+        <LoaderSpinner title="Featured Products" />
       }
 
       <div className={styles['view-products__container']}>

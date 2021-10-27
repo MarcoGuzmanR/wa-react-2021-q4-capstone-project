@@ -1,7 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
+import LoaderSpinner from '../../components/common/loaderSpinner';
 import SimpleImageSlider from "react-simple-image-slider";
+import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
 function BannerSlider() {
   const propsCall = {
@@ -32,7 +33,7 @@ function BannerSlider() {
           showBullets={true}
           showNavs={true}
         /> :
-        <div>Loading</div>
+        <LoaderSpinner />
       }
     </div>
   );

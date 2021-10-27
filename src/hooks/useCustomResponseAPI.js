@@ -3,13 +3,11 @@ import { API_BASE_URL } from '../utils/constants';
 import { useLatestAPI } from './useLatestAPI';
 
 function buildQueryParams(documentType, documentTags) {
-  let params = `q=${encodeURIComponent(`[[at(document.type, "${documentType}")]]`)}`;
+  const tagsParams = documentTags ? `&q=${encodeURIComponent(`[[at(document.tags, ["${documentTags}"])]]`)}` : '';
 
-  if (documentTags) {
-    params += `&q=${encodeURIComponent(`[[at(document.tags, ["${documentTags}"])]]`)}`;
-  }
+  const typeParams = documentType ? `&q=${encodeURIComponent(`[[at(document.type, "${documentType}")]]`)}` : '';
 
-  return params;
+  return typeParams + tagsParams;
 }
 
 export function useCustomResponseAPI({ documentType, documentTags, pageSize }) {
@@ -26,14 +24,14 @@ export function useCustomResponseAPI({ documentType, documentTags, pageSize }) {
 
     const controller = new AbortController();
 
+    const queryParams = buildQueryParams(documentType, documentTags);
+
     async function getResponse() {
       try {
         setResponse({ data: {}, isLoading: true });
 
-        const queryParams = buildQueryParams(documentType, documentTags);
-
         const response = await fetch(
-          `${API_BASE_URL}/documents/search?ref=${apiRef}&${queryParams}&lang=en-us&pageSize=${pageSize}`,
+          `${API_BASE_URL}/documents/search?ref=${apiRef}${queryParams}&lang=en-us&pageSize=${pageSize}`,
           {
             signal: controller.signal,
           }

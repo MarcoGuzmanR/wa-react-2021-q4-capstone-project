@@ -1,5 +1,6 @@
 import React from 'react';
 import CategoryCard from '../categoryCard';
+import LoaderSpinner from '../../components/common/loaderSpinner';
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import styles from './productCategories.module.css';
 import propTypes from 'prop-types';
@@ -27,7 +28,7 @@ function ProductCategories() {
           categoriesList.map((category) => (
             <CategoryCard key={category.id} category={category} />
           )) :
-          <div>Loading...</div>
+          <LoaderSpinner title="Product Categories" />
         }
       </div>
     </div>
