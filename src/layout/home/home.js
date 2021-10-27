@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './home.module.css';
 import propTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import BannerSlider from '../../components/bannerSlider';
 import ProductCategories from '../../components/productCategories';
@@ -36,9 +37,11 @@ function Home() {
       }
 
       <div className={styles['view-products__container']}>
-        <button className="btn-secondary" type="button">
-          View all products
-        </button>
+        <Link to="/products">
+          <button className="btn-secondary" type="button">
+            View all products
+          </button>
+        </Link>
       </div>
     </div>
   );

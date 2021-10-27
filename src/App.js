@@ -17,11 +17,11 @@ function App() {
       <Router>
         <Header />
         <Switch>
+          <Route path={['/products', `/products?category={categorySlug}`]}>
+            <ProductList />
+          </Route>
           <Route path={['/', '/home']}>
             <Home />
-          </Route>
-          <Route path={['/products', `/products?category=`]}>
-            <ProductList />
           </Route>
         </Switch>
       </Router>
