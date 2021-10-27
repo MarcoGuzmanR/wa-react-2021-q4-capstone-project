@@ -1,10 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useFeaturedBanners } from '../../hooks/useFeaturedBanners';
+import { useCustomReponseAPI } from '../../hooks/useCustomResponseAPI';
 import SimpleImageSlider from "react-simple-image-slider";
 
 function BannerSlider() {
-  const { data, isLoading } = useFeaturedBanners();
+  const propsResponse = {
+    documentType: 'banner',
+    pageSize: 5
+  };
+
+  const { data, isLoading } = useCustomReponseAPI(propsResponse);
   const [images, setImages] = React.useState([]);
 
   React.useEffect(() => {
