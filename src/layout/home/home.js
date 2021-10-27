@@ -6,18 +6,33 @@ import BannerSlider from '../../components/bannerSlider';
 import ProductCategories from '../../components/productCategories';
 import FeaturedProducts from '../../components/productsGrid';
 
-import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
-import featuredProductsRawData from '../../mocks/en-us/featured-products.json';
+import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
 function Home() {
-  const { results: mockedCategories } = productCategoriesRawData;
-  const { results: mockedProducts }   = featuredProductsRawData;
+  const propsCall = {
+    documentType: 'product',
+    documentTags: ["Featured"],
+    pageSize: 16
+  };
+
+  const { data, isLoading } = useCustomResponseAPI(propsCall);
+  const [featuredProducts, setFeaturedProducts] = React.useState();
+
+  React.useEffect(() => {
+    if (!isLoading) {
+      setFeaturedProducts(data.results);
+    }
+  }, [data, isLoading]);
 
   return (
     <div className={styles['main__container']}>
       <BannerSlider />
-      <ProductCategories categoriesList={mockedCategories} />
-      <FeaturedProducts title="Featured Products" productsList={mockedProducts} />
+      <ProductCategories />
+
+      {!isLoading && featuredProducts ?
+        <FeaturedProducts title="Featured Products" productsList={featuredProducts} /> :
+        <div>Loading...</div>
+      }
 
       <div className={styles['view-products__container']}>
         <button className="btn-secondary" type="button">

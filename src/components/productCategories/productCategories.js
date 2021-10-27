@@ -1,17 +1,17 @@
 import React from 'react';
 import CategoryCard from '../categoryCard';
-import { useCustomReponseAPI } from '../../hooks/useCustomResponseAPI';
+import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import styles from './productCategories.module.css';
 import propTypes from 'prop-types';
 
 function ProductCategories() {
-  const propsResponse = {
+  const propsCall = {
     documentType: 'category',
     pageSize: 30
   };
 
-  const { data, isLoading } = useCustomReponseAPI(propsResponse);
-  const [categoriesList, setCategoriesList] = React.useState([]);
+  const { data, isLoading } = useCustomResponseAPI(propsCall);
+  const [categoriesList, setCategoriesList] = React.useState();
 
   React.useEffect(() => {
     if (!isLoading) {
@@ -23,7 +23,7 @@ function ProductCategories() {
     <div className={styles.container}>
       <h2>Product Categories</h2>
       <div className={styles['categories__grid']}>
-        {!isLoading && categoriesList.length ?
+        {!isLoading && categoriesList ?
           categoriesList.map((category) => (
             <CategoryCard key={category.id} category={category} />
           )) :
@@ -34,8 +34,6 @@ function ProductCategories() {
   );
 }
 
-ProductCategories.propTypes = {
-  categoriesList: propTypes.array.isRequired
-};
+ProductCategories.propTypes = {};
 
 export default ProductCategories;

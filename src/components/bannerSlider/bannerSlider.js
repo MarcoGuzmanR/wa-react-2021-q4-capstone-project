@@ -1,16 +1,16 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useCustomReponseAPI } from '../../hooks/useCustomResponseAPI';
+import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import SimpleImageSlider from "react-simple-image-slider";
 
 function BannerSlider() {
-  const propsResponse = {
+  const propsCall = {
     documentType: 'banner',
     pageSize: 5
   };
 
-  const { data, isLoading } = useCustomReponseAPI(propsResponse);
-  const [images, setImages] = React.useState([]);
+  const { data, isLoading } = useCustomResponseAPI(propsCall);
+  const [images, setImages] = React.useState();
 
   React.useEffect(() => {
     if (!isLoading) {
@@ -24,7 +24,7 @@ function BannerSlider() {
 
   return (
     <div>
-      {!isLoading && images.length ?
+      {!isLoading && images ?
         <SimpleImageSlider
           width={'100%'}
           height={705}
