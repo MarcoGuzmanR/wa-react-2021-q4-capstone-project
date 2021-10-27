@@ -1,29 +1,38 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { useFeaturedBanners } from '../../hooks/useFeaturedBanners';
 import SimpleImageSlider from "react-simple-image-slider";
 
-function BannerSlider({ bannersList }) {
-  const images = bannersList.map((banner) => {
-    return {
-      url: banner.data.main_image.url
-    };
-  });
+function BannerSlider() {
+  const { data, isLoading } = useFeaturedBanners();
+  const [images, setImages] = React.useState([]);
+
+  React.useEffect(() => {
+    if (!isLoading) {
+      const banners = data.results.map((banner) => ({
+        url: banner.data.main_image.url
+      }));
+
+      setImages(banners);
+    }
+  }, [data, isLoading]);
 
   return (
     <div>
-      <SimpleImageSlider
-        width={'100%'}
-        height={705}
-        images={images}
-        showBullets={true}
-        showNavs={true}
-      />
+      {!isLoading && images.length ?
+        <SimpleImageSlider
+          width={'100%'}
+          height={705}
+          images={images}
+          showBullets={true}
+          showNavs={true}
+        /> :
+        <div>Loading</div>
+      }
     </div>
   );
 }
 
-BannerSlider.propTypes = {
-  bannersList: propTypes.array.isRequired
-};
+BannerSlider.propTypes = {};
 
 export default BannerSlider;

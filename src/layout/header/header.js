@@ -3,20 +3,16 @@ import styles from './header.module.css';
 import cartIcon from '../../assets/images/cart-15-48.png'
 import propTypes from 'prop-types';
 
-function Header({ setIsHomePage }) {
-  function handleSetIsHomePage() {
-    setIsHomePage(true);
-  }
-
+function Header() {
   return (
     <header className={styles.container}>
       <div className={styles['container__menu']}>
-        <div className={styles['logo__name-container']} onClick={handleSetIsHomePage}>
+        <div className={styles['logo__name-container']}>
           <h2 className={styles['logo__name']}>BestHome</h2>
         </div>
         <nav className={styles['nav-container']}>
           <ul>
-            <li><a href="/" onClick={handleSetIsHomePage}>Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/">About</a></li>
           </ul>
         </nav>
@@ -42,8 +38,6 @@ function Header({ setIsHomePage }) {
   );
 }
 
-Header.propTypes = {
-  setIsHomePage: propTypes.func.isRequired,
-};
+Header.propTypes = {};
 
 export default Header;
