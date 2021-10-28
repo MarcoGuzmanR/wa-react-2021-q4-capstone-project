@@ -3,8 +3,14 @@ import styles from './productList.module.css';
 import ProductsGrid from '../productsGrid';
 import CategoryFilters from '../categoryFilters';
 import LoaderSpinner from '../common/loaderSpinner';
+
+import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
-import productsRawData from '../../mocks/en-us/products.json';
+
+const propsCall = {
+  documentType: 'product',
+  pageSize: 12
+};
 
 function getFilteredCategoryIds(categoryFilters) {
   const filtersApplied =
@@ -15,10 +21,9 @@ function getFilteredCategoryIds(categoryFilters) {
 
 function ProductList() {
   const { results: mockedCategories } = productCategoriesRawData;
-  const { results: mockedProducts } = productsRawData;
 
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [products, setProducts] = React.useState(mockedProducts);
+  const { data: allProducts, isLoading } = useCustomResponseAPI(propsCall);
+  const [products, setProducts] = React.useState();
   const [categoryFilters, setCategoryFilters] = React.useState(() => {
     return mockedCategories.map((category) => {
       return {
@@ -30,26 +35,24 @@ function ProductList() {
   });
 
   React.useEffect(() => {
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(loadingTimer);
-  }, []);
+    if (!isLoading) {
+      setProducts(allProducts.results);
+    }
+  }, [allProducts, isLoading]);
 
   React.useEffect(() => {
     const filterCategoryIds = getFilteredCategoryIds(categoryFilters);
 
     if (filterCategoryIds.length) {
-      const filteredProducts = mockedProducts.filter((product) => {
+      const filteredProducts = allProducts.results.filter((product) => {
         return filterCategoryIds.includes(product.data.category.id);
       });
 
       return setProducts(filteredProducts);
     }
 
-    setProducts(mockedProducts);
-  }, [categoryFilters, mockedProducts]);
+    setProducts(allProducts.results);
+  }, [categoryFilters, allProducts]);
 
   return (
     <div className={styles.container}>
@@ -61,12 +64,9 @@ function ProductList() {
         />
       </aside>
       <section>
-        {isLoading ?
-          <LoaderSpinner title="Products" /> :
-          (products.length ?
-            <ProductsGrid title="Products" productsList={products} /> :
-            <h3>Products not found</h3>
-          )
+        {!isLoading && products ?
+          <ProductsGrid title="Products" productsList={products} /> :
+          <LoaderSpinner title="Products" />
         }
       </section>
     </div>

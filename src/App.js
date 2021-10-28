@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path={['/products', `/products?category={categorySlug}`]}>
+          <Route path={['/products', `/products?category`]}>
             <ProductList />
           </Route>
           <Route path={['/', '/home']}>

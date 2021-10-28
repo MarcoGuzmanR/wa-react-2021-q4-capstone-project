@@ -10,13 +10,13 @@ import LoaderSpinner from '../../components/common/loaderSpinner';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
-function Home() {
-  const propsCall = {
-    documentType: 'product',
-    documentTags: ['Featured'],
-    pageSize: 16
-  };
+const propsCall = {
+  documentType: 'product',
+  documentTags: ['Featured'],
+  pageSize: 16
+};
 
+function Home() {
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [featuredProducts, setFeaturedProducts] = React.useState();
 

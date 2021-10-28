@@ -4,12 +4,12 @@ import LoaderSpinner from '../../components/common/loaderSpinner';
 import SimpleImageSlider from "react-simple-image-slider";
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
-function BannerSlider() {
-  const propsCall = {
-    documentType: 'banner',
-    pageSize: 5
-  };
+const propsCall = {
+  documentType: 'banner',
+  pageSize: 5
+};
 
+function BannerSlider() {
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [images, setImages] = React.useState();
 

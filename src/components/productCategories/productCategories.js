@@ -5,12 +5,12 @@ import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import styles from './productCategories.module.css';
 import propTypes from 'prop-types';
 
-function ProductCategories() {
-  const propsCall = {
-    documentType: 'category',
-    pageSize: 30
-  };
+const propsCall = {
+  documentType: 'category',
+  pageSize: 30
+};
 
+function ProductCategories() {
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [categoriesList, setCategoriesList] = React.useState();
 
