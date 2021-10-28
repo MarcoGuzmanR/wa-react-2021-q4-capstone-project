@@ -4,7 +4,6 @@ import { useLatestAPI } from './useLatestAPI';
 
 function buildQueryParams(documentType, documentTags) {
   const tagsParams = documentTags ? `&q=${encodeURIComponent(`[[at(document.tags, ["${documentTags}"])]]`)}` : '';
-
   const typeParams = documentType ? `&q=${encodeURIComponent(`[[at(document.type, "${documentType}")]]`)}` : '';
 
   return typeParams + tagsParams;
