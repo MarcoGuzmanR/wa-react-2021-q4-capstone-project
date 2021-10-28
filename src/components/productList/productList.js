@@ -16,6 +16,16 @@ const propsProductsCall = {
   pageSize: 12
 };
 
+function setCategories({ results: categories }) {
+  return categories.map((category) => {
+    return {
+      id: category.id,
+      name: category.data.name,
+      activeFilter: false
+    }
+  });
+}
+
 function getFilteredCategoryIds(categoryFilters) {
   const filtersApplied =
     categoryFilters.filter(filter => filter.activeFilter === true);
@@ -30,17 +40,13 @@ function ProductList() {
   const [products, setProducts] = React.useState();
 
   React.useEffect(() => {
-    if (!isLoadingCategories && allCategories.results) {
-      const categories = allCategories.results.map((category) => {
-        return {
-          id: category.id,
-          name: category.data.name,
-          activeFilter: false
-        }
-      });
-
-      setCategoryFilters(categories);
+    if ((isLoadingCategories === undefined || isLoadingCategories === false) && !allCategories.results) {
+      return;
     }
+
+    const categories = setCategories(allCategories);
+
+    setCategoryFilters(categories);
   }, [allCategories, isLoadingCategories]);
 
   React.useEffect(() => {
@@ -50,16 +56,18 @@ function ProductList() {
   }, [allProducts, isLoadingProducts]);
 
   React.useEffect(() => {
-    if (categoryFilters) {
-      const filterCategoryIds = getFilteredCategoryIds(categoryFilters);
+    if (!categoryFilters) {
+      return;
+    }
 
-      if (filterCategoryIds.length) {
-        const filteredProducts = allProducts.results.filter((product) => {
-          return filterCategoryIds.includes(product.data.category.id);
-        });
+    const filterCategoryIds = getFilteredCategoryIds(categoryFilters);
 
-        return setProducts(filteredProducts);
-      }
+    if (filterCategoryIds.length) {
+      const filteredProducts = allProducts.results.filter((product) => {
+        return filterCategoryIds.includes(product.data.category.id);
+      });
+
+      return setProducts(filteredProducts);
     }
 
     setProducts(allProducts.results);
