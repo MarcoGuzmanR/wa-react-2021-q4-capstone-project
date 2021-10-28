@@ -2,14 +2,19 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../utils/constants';
 import { useLatestAPI } from './useLatestAPI';
 
-function buildQueryParams(documentType, documentTags) {
+function buildQueryParams(productId, documentType, documentTags, pageSize) {
+  if (productId) {
+    // return `&q=${encodeURIComponent(`[[:d=at(document.id,"${productId}")]]`)}`;
+    return `&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22${productId}%22%29+%5D%5D`;
+  }
+
   const tagsParams = documentTags ? `&q=${encodeURIComponent(`[[at(document.tags, ["${documentTags}"])]]`)}` : '';
   const typeParams = documentType ? `&q=${encodeURIComponent(`[[at(document.type, "${documentType}")]]`)}` : '';
 
-  return typeParams + tagsParams;
+  return typeParams + tagsParams + `&lang=en-us&pageSize=${pageSize}`;
 }
 
-export function useCustomResponseAPI({ documentType, documentTags, pageSize }) {
+export function useCustomResponseAPI({ documentType, documentTags, pageSize, productId }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [response, setResponse] = useState(() => ({
     data: {},
@@ -23,14 +28,14 @@ export function useCustomResponseAPI({ documentType, documentTags, pageSize }) {
 
     const controller = new AbortController();
 
-    const queryParams = buildQueryParams(documentType, documentTags);
+    const queryParams = buildQueryParams(productId, documentType, documentTags, pageSize);
 
     async function getResponse() {
       try {
         setResponse({ data: {}, isLoading: true });
 
         const response = await fetch(
-          `${API_BASE_URL}/documents/search?ref=${apiRef}${queryParams}&lang=en-us&pageSize=${pageSize}`,
+          `${API_BASE_URL}/documents/search?ref=${apiRef}${queryParams}`,
           {
             signal: controller.signal,
           }

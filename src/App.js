@@ -10,6 +10,7 @@ import Home from './layout/home';
 import Footer from './layout/footer';
 
 import ProductList from './components/productList';
+import ProductDetail from './components/productDetail';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         <Switch>
           <Route path={['/products', `/products?category`]}>
             <ProductList />
+          </Route>
+          <Route path={'/product/:productId'}>
+            <ProductDetail />
           </Route>
           <Route path={['/', '/home']}>
             <Home />
