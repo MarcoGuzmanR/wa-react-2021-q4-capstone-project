@@ -5,7 +5,6 @@ import propTypes from 'prop-types';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
-
 function ProductDetail() {
   const { productId } = useParams();
   const propsCall = { productId };

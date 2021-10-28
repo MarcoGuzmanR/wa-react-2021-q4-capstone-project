@@ -5,6 +5,12 @@ import { Link } from "react-router-dom";
 import propTypes from 'prop-types';
 
 function Header() {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  function handleSearchTerm(event) {
+    setSearchTerm(event.target.value);
+  }
+
   return (
     <header className={styles.container}>
       <div className={styles['container__menu']}>
@@ -28,18 +34,19 @@ function Header() {
         </div>
       </div>
       <div className={styles['container__search']}>
-        <form>
-          <input
-            className={styles['search-product']}
-            type="search"
-            placeholder="Search products"
-          />
+        <input
+          className={styles['search-product']}
+          type="search"
+          onChange={handleSearchTerm}
+          placeholder="Search products"
+        />
+        <Link to={`search?q=${searchTerm}`}>
           <input
             className="btn-primary"
-            type="submit"
+            type="button"
             value="Go"
           />
-        </form>
+        </Link>
       </div>
     </header>
   );

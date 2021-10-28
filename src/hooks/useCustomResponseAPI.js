@@ -2,19 +2,20 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../utils/constants';
 import { useLatestAPI } from './useLatestAPI';
 
-function buildQueryParams(productId, documentType, documentTags, pageSize) {
+function buildQueryParams(searchTerm, productId, documentType, documentTags, pageSize) {
   if (productId) {
     // return `&q=${encodeURIComponent(`[[:d=at(document.id,"${productId}")]]`)}`;
     return `&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22${productId}%22%29+%5D%5D`;
   }
 
-  const tagsParams = documentTags ? `&q=${encodeURIComponent(`[[at(document.tags, ["${documentTags}"])]]`)}` : '';
-  const typeParams = documentType ? `&q=${encodeURIComponent(`[[at(document.type, "${documentType}")]]`)}` : '';
+  const searchParams = searchTerm   ? `&q=${encodeURIComponent(`[[fulltext(document, "${searchTerm}")]]`)}` : '';
+  const tagsParams   = documentTags ? `&q=${encodeURIComponent(`[[at(document.tags, ["${documentTags}"])]]`)}` : '';
+  const typeParams   = documentType ? `&q=${encodeURIComponent(`[[at(document.type, "${documentType}")]]`)}` : '';
 
-  return typeParams + tagsParams + `&lang=en-us&pageSize=${pageSize}`;
+  return `${typeParams}${searchParams}${tagsParams}&lang=en-us&pageSize=${pageSize}`;
 }
 
-export function useCustomResponseAPI({ documentType, documentTags, pageSize, productId }) {
+export function useCustomResponseAPI({ searchTerm, productId, documentType, documentTags, pageSize }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [response, setResponse] = useState(() => ({
     data: {},
@@ -28,7 +29,7 @@ export function useCustomResponseAPI({ documentType, documentTags, pageSize, pro
 
     const controller = new AbortController();
 
-    const queryParams = buildQueryParams(productId, documentType, documentTags, pageSize);
+    const queryParams = buildQueryParams(searchTerm, productId, documentType, documentTags, pageSize);
 
     async function getResponse() {
       try {
@@ -55,7 +56,7 @@ export function useCustomResponseAPI({ documentType, documentTags, pageSize, pro
     return () => {
       controller.abort();
     };
-  }, [apiRef, documentType, isApiMetadataLoading, pageSize]);
+  }, [apiRef, documentType, isApiMetadataLoading, pageSize, productId, searchTerm]);
 
   return response;
 }

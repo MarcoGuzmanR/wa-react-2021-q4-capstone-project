@@ -9,6 +9,7 @@ import Header from './layout/header';
 import Home from './layout/home';
 import Footer from './layout/footer';
 
+import SearchResults from './components/searchResults';
 import ProductList from './components/productList';
 import ProductDetail from './components/productDetail';
 
@@ -18,6 +19,9 @@ function App() {
       <Router>
         <Header />
         <Switch>
+          <Route path={'/search'}>
+            <SearchResults />
+          </Route>
           <Route path={['/products', `/products?category`]}>
             <ProductList />
           </Route>
