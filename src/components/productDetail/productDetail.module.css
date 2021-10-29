@@ -2,3 +2,20 @@
   background-color: #467590;
   display: flex;
 }
+
+.details-container {
+  flex: 2
+}
+
+.gallery-container {
+  flex: 1
+}
+
+.main-container {
+  margin: 2% 10%;
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+}

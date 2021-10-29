@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './productDetail.module.css'
 import LoaderSpinner from '../common/loaderSpinner';
+import ImageGallery from '../common/imageGallery/imageGallery';
 import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
 
@@ -12,21 +13,23 @@ function ProductDetail() {
 
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [product, setProduct] = React.useState();
-  console.log(product);
 
   React.useEffect(() => {
-    if (!isLoading) {
-      setProduct(data.results[0]);
+    if (isLoading) {
+      return;
     }
+
+    setProduct(data.results[0]);
   }, [data, isLoading]);
 
   return (
     <div className={styles.container}>
       {!isLoading && product ?
         <div className={styles['main-container']}>
+          <h1>{product.data.name}</h1>
           <div className={styles['top-container']}>
             <div className={styles['gallery-container']}>
-              <h2>{product.data.name}</h2>
+              <ImageGallery pictures={product.data.images} />
             </div>
             <div className={styles['details-container']}>
               <label htmlFor="price">Price: ${product.data.price.toFixed(2)}</label>

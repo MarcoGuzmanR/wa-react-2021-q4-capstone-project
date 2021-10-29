@@ -30,6 +30,7 @@ function BannerSlider() {
           width={'100%'}
           height={705}
           images={images}
+          loop={true}
           showBullets={true}
           showNavs={true}
         /> :
