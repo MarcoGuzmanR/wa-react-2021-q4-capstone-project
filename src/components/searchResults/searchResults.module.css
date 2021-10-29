@@ -1,1 +1,4 @@
-.container {}
+.container {
+  background-color: #467590;
+  min-height: 800px;
+}

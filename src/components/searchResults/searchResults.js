@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './searchResults.module.css'
 import { useLocation } from 'react-router-dom';
-import ProductsGrid from '../../components/productsGrid';
+import SearchListProducts from '../../components/searchListProducts';
 import LoaderSpinner from '../common/loaderSpinner';
 import propTypes from 'prop-types';
 
@@ -25,17 +25,17 @@ function SearchResults() {
   const [products, setProducts] = React.useState();
 
   React.useEffect(() => {
-    if (!isLoadingProducts) {
-      setProducts(data.results);
+    if (isLoadingProducts) {
+      return;
     }
-  }, [data, isLoadingProducts]);
 
-  console.log(products);
+    setProducts(data.results);
+  }, [data, isLoadingProducts]);
 
   return (
     <div className={styles.container}>
       {!isLoadingProducts && products ?
-        <ProductsGrid title="Products" productsList={products} /> :
+        <SearchListProducts productsList={products} searchTerm={searchTerm} /> :
         <LoaderSpinner title="Products" />
       }
     </div>

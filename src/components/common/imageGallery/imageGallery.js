@@ -11,7 +11,6 @@ function ImageGallery({ pictures }) {
   return (
     <div className={styles.container}>
       <SimpleImageSlider
-        autoplay={true}
         height={405}
         images={images}
         loop={true}
