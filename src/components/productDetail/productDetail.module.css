@@ -1,1 +1,4 @@
-.container {}
+.container {
+  background-color: #467590;
+  display: flex;
+}
