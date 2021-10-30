@@ -12,10 +12,16 @@
 }
 
 .main-container {
+  line-height: 1.75rem;
   margin: 2% 10%;
 }
 
+.main-container label {
+  font-size: 1.25rem;
+}
+
 .top-container {
-  display: flex;
   align-items: center;
+  display: flex;
+  margin: 4% 0;
 }

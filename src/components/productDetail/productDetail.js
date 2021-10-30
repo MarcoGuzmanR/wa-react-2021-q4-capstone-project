@@ -3,7 +3,6 @@ import styles from './productDetail.module.css'
 import LoaderSpinner from '../common/loaderSpinner';
 import ImageGallery from '../common/imageGallery/imageGallery';
 import { useParams } from 'react-router-dom';
-import propTypes from 'prop-types';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
@@ -32,13 +31,13 @@ function ProductDetail() {
               <ImageGallery pictures={product.data.images} />
             </div>
             <div className={styles['details-container']}>
-              <label htmlFor="price">Price: ${product.data.price.toFixed(2)}</label>
-              <label htmlFor="sku">SKU: {product.data.sku}</label>
-              <label htmlFor="category">Category: {product.data.category.id}</label>
+              <p><label htmlFor="price">Price: ${product.data.price.toFixed(2)}</label></p>
+              <p><label htmlFor="sku">SKU: {product.data.sku}</label></p>
+              <p><label htmlFor="category">Category: {product.data.category.id}</label></p>
               {product.tags.map((tag, index) => (
-                <label key={index}>{tag}</label>
+                <p><label key={index}>{tag}</label></p>
               ))}
-              <p>{product.data.short_description}</p>
+              <p><label>Description: {product.data.description[0].text}</label></p>
               <label htmlFor="numberItems">Quantity:</label>
               <input name="numberItems" type="number" />
               <input className="btn-secondary" type="button" value="Add to Cart" />
