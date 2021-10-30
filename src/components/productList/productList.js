@@ -5,6 +5,7 @@ import CategoryFilters from '../categoryFilters';
 import LoaderSpinner from '../common/loaderSpinner';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
+import { useQuery } from '../../hooks/useQuery';
 
 const propsCategoriesCall = {
   documentType: 'category',
@@ -16,12 +17,12 @@ const propsProductsCall = {
   pageSize: 12
 };
 
-function setCategories({ results: categories }) {
+function setCategories({ results: categories }, categoryParam) {
   return categories.map((category) => {
     return {
       id: category.id,
       name: category.data.name,
-      activeFilter: false
+      activeFilter: category.slugs[0] === categoryParam
     }
   });
 }
@@ -34,6 +35,9 @@ function getFilteredCategoryIds(categoryFilters) {
 }
 
 function ProductList() {
+  const query = useQuery();
+  const categoryParam = query.get('category');
+
   const { data: allCategories, isLoadingCategories } = useCustomResponseAPI(propsCategoriesCall);
   const { data: allProducts, isLoadingProducts } = useCustomResponseAPI(propsProductsCall);
   const [categoryFilters, setCategoryFilters] = React.useState();
@@ -44,10 +48,10 @@ function ProductList() {
       return;
     }
 
-    const categories = setCategories(allCategories);
+    const categories = setCategories(allCategories, categoryParam);
 
     setCategoryFilters(categories);
-  }, [allCategories, isLoadingCategories]);
+  }, [allCategories, categoryParam, isLoadingCategories]);
 
   React.useEffect(() => {
     if (!isLoadingProducts) {
@@ -56,7 +60,7 @@ function ProductList() {
   }, [allProducts, isLoadingProducts]);
 
   React.useEffect(() => {
-    if (!categoryFilters) {
+    if (!categoryFilters || !allProducts.results) {
       return;
     }
 
