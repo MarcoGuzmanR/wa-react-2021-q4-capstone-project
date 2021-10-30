@@ -3,6 +3,14 @@ import BestHomeContext from './context';
 
 import { useCustomResponseAPI } from '../hooks/useCustomResponseAPI';
 
+function getCategoriesMap(categories) {
+  const categoriesMap = new Map();
+
+  categories.map(({id, data}) => categoriesMap.set(id, data.name));
+
+  return categoriesMap;
+}
+
 const propsCall = {
   documentType: 'category',
   pageSize: 30
@@ -11,6 +19,7 @@ const propsCall = {
 function BestHomeProvider(props) {
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [categoriesList, setCategoriesList] = React.useState([]);
+  const [categoriesMap, setCategoriesMap] = React.useState();
 
   React.useEffect(() => {
     if (isLoading) {
@@ -18,10 +27,12 @@ function BestHomeProvider(props) {
     }
 
     setCategoriesList(data.results);
+    setCategoriesMap(getCategoriesMap(data.results));
   }, [data, isLoading]);
 
   const contextValues = {
     categoriesList,
+    categoriesMap,
     isLoading
   };
 

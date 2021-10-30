@@ -4,9 +4,11 @@ import LoaderSpinner from '../common/loaderSpinner';
 import ImageGallery from '../common/imageGallery/imageGallery';
 import { useParams } from 'react-router-dom';
 
+import { useCategories } from '../../hooks/useBestHomeContext';
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
 function ProductDetail() {
+  const { categoriesMap } = useCategories();
   const { productId } = useParams();
   const propsCall = { productId };
 
@@ -33,7 +35,7 @@ function ProductDetail() {
             <div className={styles['details-container']}>
               <p><label htmlFor="price">Price: ${product.data.price.toFixed(2)}</label></p>
               <p><label htmlFor="sku">SKU: {product.data.sku}</label></p>
-              <p><label htmlFor="category">Category: {product.data.category.id}</label></p>
+              <p><label htmlFor="category">Category: {categoriesMap?.get(product.data.category.id)}</label></p>
               {product.tags.map((tag, index) => (
                 <p><label key={index}>{tag}</label></p>
               ))}

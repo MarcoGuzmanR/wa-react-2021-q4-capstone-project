@@ -2,9 +2,9 @@ import React from "react";
 import BestHomeContext from "../context/context";
 
 function useCategories() {
-  const { categoriesList, isLoading } = React.useContext(BestHomeContext);
+  const { categoriesList, categoriesMap, isLoading } = React.useContext(BestHomeContext);
 
-  return { categoriesList, isLoading };
+  return { categoriesList, categoriesMap, isLoading };
 }
 
 export { useCategories };

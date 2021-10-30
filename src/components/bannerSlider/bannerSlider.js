@@ -1,5 +1,4 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import LoaderSpinner from '../../components/common/loaderSpinner';
 import SimpleImageSlider from "react-simple-image-slider";
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
@@ -39,7 +38,5 @@ function BannerSlider() {
     </div>
   );
 }
-
-BannerSlider.propTypes = {};
 
 export default BannerSlider;

@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './searchResults.module.css'
 import SearchListProducts from '../../components/searchListProducts';
 import LoaderSpinner from '../common/loaderSpinner';
-import propTypes from 'prop-types';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import { useQuery } from '../../hooks/useQuery';
@@ -37,7 +36,5 @@ function SearchResults() {
     </div>
   );
 }
-
-SearchResults.propTypes = {};
 
 export default SearchResults;

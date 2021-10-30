@@ -2,7 +2,10 @@ import React from 'react';
 import styles from './productRow.module.css'
 import propTypes from 'prop-types';
 
+import { useCategories } from '../../hooks/useBestHomeContext';
+
 function ProductRow({ product }) {
+  const { categoriesMap } = useCategories();
   return (
     <React.Fragment>
       <div className={styles['product-row']}>
@@ -16,7 +19,7 @@ function ProductRow({ product }) {
         </div>
         <div className={styles['details-container']}>
           <h3>{product.data.name}</h3>
-          <p><b>Category:</b>{product.data.category.id}</p>
+          <p><b>Category: </b>{categoriesMap?.get(product.data.category.id)}</p>
           <p><b>Price: </b>${product.data.price.toFixed(2)}</p>
           <p><b>Description: </b>{product.data.short_description}</p>
           <input className="btn-secondary" type="button" value="Add to Cart" />

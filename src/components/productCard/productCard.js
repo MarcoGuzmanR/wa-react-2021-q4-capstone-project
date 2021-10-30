@@ -3,7 +3,11 @@ import styles from './productCard.module.css'
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-function ProductCard({ product, categoriesMap }) {
+import { useCategories } from '../../hooks/useBestHomeContext';
+
+function ProductCard({ product }) {
+  const { categoriesMap } = useCategories();
+
   const { data } = product;
   const { mainimage } = data;
 
@@ -20,7 +24,7 @@ function ProductCard({ product, categoriesMap }) {
 
         <div className={styles.details}>
           <p className={styles.category}>
-            <b>{categoriesMap.get(data.category.id)}</b>
+            <b>{categoriesMap?.get(data.category.id)}</b>
           </p>
           <p><b>${data.price.toFixed(2)}</b></p>
         </div>
@@ -47,8 +51,7 @@ ProductCard.propTypes = {
       }),
       price: propTypes.number
     })
-  }),
-  categoriesMap: propTypes.object.isRequired
+  })
 };
 
 export default ProductCard;

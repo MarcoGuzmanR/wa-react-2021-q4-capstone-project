@@ -51,9 +51,11 @@ function ProductList() {
   }, [allCategories, categoryParam, isLoadingCategories]);
 
   React.useEffect(() => {
-    if (!isLoadingProducts) {
-      setProducts(allProducts.results);
+    if (isLoadingProducts) {
+      return;
     }
+
+    setProducts(allProducts.results);
   }, [allProducts, isLoadingProducts]);
 
   React.useEffect(() => {

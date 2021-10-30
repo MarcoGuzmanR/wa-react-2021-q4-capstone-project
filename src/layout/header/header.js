@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './header.module.css';
 import cartIcon from '../../assets/images/cart-15-48.png'
 import { Link } from "react-router-dom";
-import propTypes from 'prop-types';
 
 function Header() {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -51,7 +50,5 @@ function Header() {
     </header>
   );
 }
-
-Header.propTypes = {};
 
 export default Header;
