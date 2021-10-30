@@ -5,19 +5,15 @@ import CategoryFilters from '../categoryFilters';
 import LoaderSpinner from '../common/loaderSpinner';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
+import { useCategories } from '../../hooks/useBestHomeContext';
 import { useQuery } from '../../hooks/useQuery';
-
-const propsCategoriesCall = {
-  documentType: 'category',
-  pageSize: 30
-};
 
 const propsProductsCall = {
   documentType: 'product',
   pageSize: 12
 };
 
-function setCategories({ results: categories }, categoryParam) {
+function setCategories(categories, categoryParam) {
   return categories.map((category) => {
     return {
       id: category.id,
@@ -38,19 +34,20 @@ function ProductList() {
   const query = useQuery();
   const categoryParam = query.get('category');
 
-  const { data: allCategories, isLoadingCategories } = useCustomResponseAPI(propsCategoriesCall);
+  const { categoriesList: allCategories, isLoading: isLoadingCategories } = useCategories();
+
   const { data: allProducts, isLoadingProducts } = useCustomResponseAPI(propsProductsCall);
   const [categoryFilters, setCategoryFilters] = React.useState();
   const [products, setProducts] = React.useState();
 
   React.useEffect(() => {
-    if ((isLoadingCategories === undefined || isLoadingCategories === false) && !allCategories.results) {
+    if (isLoadingCategories && !allCategories.length) {
       return;
     }
 
     const categories = setCategories(allCategories, categoryParam);
-
     setCategoryFilters(categories);
+
   }, [allCategories, categoryParam, isLoadingCategories]);
 
   React.useEffect(() => {

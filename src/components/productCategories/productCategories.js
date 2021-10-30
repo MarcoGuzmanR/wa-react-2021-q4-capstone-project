@@ -1,24 +1,12 @@
 import React from 'react';
 import CategoryCard from '../categoryCard';
 import LoaderSpinner from '../../components/common/loaderSpinner';
-import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 import styles from './productCategories.module.css';
-import propTypes from 'prop-types';
 
-const propsCall = {
-  documentType: 'category',
-  pageSize: 30
-};
+import { useCategories } from '../../hooks/useBestHomeContext';
 
 function ProductCategories() {
-  const { data, isLoading } = useCustomResponseAPI(propsCall);
-  const [categoriesList, setCategoriesList] = React.useState();
-
-  React.useEffect(() => {
-    if (!isLoading) {
-      setCategoriesList(data.results);
-    }
-  }, [data, isLoading]);
+  const { categoriesList, isLoading } = useCategories();
 
   return (
     <div className={styles.container}>
@@ -34,7 +22,5 @@ function ProductCategories() {
     </div>
   );
 }
-
-ProductCategories.propTypes = {};
 
 export default ProductCategories;

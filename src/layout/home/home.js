@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './home.module.css';
-import propTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 import BannerSlider from '../../components/bannerSlider';
@@ -46,7 +45,5 @@ function Home() {
     </div>
   );
 }
-
-Home.propTypes = {};
 
 export default Home;
