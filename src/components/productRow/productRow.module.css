@@ -1,0 +1,12 @@
+.details-container {
+  flex: 4;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.product-row {
+  display: flex;
+  padding: 2% 0;
+}
