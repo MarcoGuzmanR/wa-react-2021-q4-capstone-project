@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductCard from '../productCard/productCard';
-import Pagination from '../common/pagination';
 import styles from './productsGrid.module.css';
 import propTypes from 'prop-types';
 
@@ -15,7 +14,6 @@ function ProductsGrid({ title, productsList }) {
             product={product} />
         ))}
       </div>
-      <Pagination />
     </div>
   );
 }

@@ -1,3 +1,7 @@
+.btn-cart--custom {
+  padding: 1.5%;
+}
+
 .container {
   background-color: #467590;
   display: flex;
@@ -18,6 +22,25 @@
 
 .main-container label {
   font-size: 1.25rem;
+}
+
+.number-items--input {
+  background-color: #f1f4f6;
+  border: none;
+  color: #467590;
+  font-size: 1.5rem;
+  margin: 0 2%;
+  text-align: center;
+  width: 10%;
+}
+
+.product-tag {
+  background-color: #286e28;
+  border: 1px solid #455c45;
+  border-radius: 3px;
+  color: #f1f4f6;
+  margin: 0 1%;
+  padding: 0.5% 1%;
 }
 
 .top-container {

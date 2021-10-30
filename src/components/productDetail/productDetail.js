@@ -33,16 +33,34 @@ function ProductDetail() {
               <ImageGallery pictures={product.data.images} />
             </div>
             <div className={styles['details-container']}>
-              <p><label htmlFor="price">Price: ${product.data.price.toFixed(2)}</label></p>
-              <p><label htmlFor="sku">SKU: {product.data.sku}</label></p>
-              <p><label htmlFor="category">Category: {categoriesMap?.get(product.data.category.id)}</label></p>
-              {product.tags.map((tag, index) => (
-                <p><label key={index}>{tag}</label></p>
-              ))}
-              <p><label>Description: {product.data.description[0].text}</label></p>
-              <label htmlFor="numberItems">Quantity:</label>
-              <input name="numberItems" type="number" />
-              <input className="btn-secondary" type="button" value="Add to Cart" />
+              <p>
+                <label htmlFor="price">
+                  <b>Price:</b> ${product.data.price.toFixed(2)}
+                </label>
+              </p>
+              <p>
+                <label htmlFor="sku">
+                <b>SKU:</b> {product.data.sku}</label>
+              </p>
+              <p>
+                <label htmlFor="category">
+                  <b>Category: </b>{categoriesMap?.get(product.data.category.id)}
+                </label>
+              </p>
+              <p>
+                <label htmlFor="tags"><b>Tags: </b></label>
+                {product.tags.map((tag, index) => (
+                  <label className={styles['product-tag']} key={index}>{tag}</label>
+                ))}
+              </p>
+              <p>
+                <label>
+                  <b>Description: </b>{product.data.description[0].text}
+                </label>
+              </p>
+              <label htmlFor="numberItems"><b>Quantity: </b></label>
+              <input className={styles['number-items--input']} name="numberItems" type="number" />
+              <input className={`btn-cart ${styles['btn-cart--custom']}`} type="button" value="Add to Cart" />
             </div>
           </div>
           <div className={styles['specs-container']}>

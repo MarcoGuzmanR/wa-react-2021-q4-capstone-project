@@ -14,21 +14,23 @@ function ProductCard({ product }) {
   return (
     <div className={styles.container}>
       <Link to={`product/${product.id}`}>
-        <img
-          src={mainimage.url}
-          alt={mainimage.alt}
-          height={mainimage.dimensions.height / 3 }
-          width={mainimage.dimensions.width / 3 } />
+        <div className={styles['top-container']}>
+          <img
+            src={mainimage.url}
+            alt={mainimage.alt}
+            height={mainimage.dimensions.height / 3 }
+            width={mainimage.dimensions.width / 3 } />
 
-        <h3>{data.name}</h3>
-
-        <div className={styles.details}>
-          <p className={styles.category}>
-            <b>{categoriesMap?.get(data.category.id)}</b>
-          </p>
-          <p><b>${data.price.toFixed(2)}</b></p>
+          <h3>{data.name}</h3>
         </div>
       </Link>
+      <div className={styles.details}>
+        <p className={styles.category}>
+          <b>{categoriesMap?.get(data.category.id)}</b>
+        </p>
+        <p><b>${data.price.toFixed(2)}</b></p>
+        <input className="btn-cart" type="button" value="Add to Cart" />
+      </div>
     </div>
   );
 }

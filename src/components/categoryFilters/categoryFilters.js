@@ -26,8 +26,8 @@ function CategoryFilters(props) {
           key={filter.id}
           className={
             filter.activeFilter ?
-            `btn-filter ${styles['filter--active']}` :
-            `btn-filter ${styles['filter--inactive']}` }
+            `btn-action ${styles['filter--active']}` :
+            `btn-action ${styles['filter--inactive']}` }
           disabled={isLoadingCategories}
           onClick={() => handleFilterChange(filter)}>
           {filter.name}
