@@ -20,6 +20,7 @@ function BestHomeProvider(props) {
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [categoriesList, setCategoriesList] = React.useState([]);
   const [categoriesMap, setCategoriesMap] = React.useState();
+  const [cartList, setCartList] = React.useState([]);
 
   React.useEffect(() => {
     if (isLoading) {
@@ -31,9 +32,11 @@ function BestHomeProvider(props) {
   }, [data, isLoading]);
 
   const contextValues = {
+    cartList,
     categoriesList,
     categoriesMap,
-    isLoading
+    isLoading,
+    setCartList
   };
 
   return (

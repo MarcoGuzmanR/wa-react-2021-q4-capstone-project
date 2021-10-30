@@ -39,6 +39,7 @@ function ProductList() {
   const { data: allProducts, isLoadingProducts } = useCustomResponseAPI(propsProductsCall);
   const [categoryFilters, setCategoryFilters] = React.useState();
   const [products, setProducts] = React.useState();
+  const [areFiltersCleared, setAreFiltersCleared] = React.useState(true);
 
   React.useEffect(() => {
     if (isLoadingCategories && !allCategories.length) {
@@ -70,6 +71,7 @@ function ProductList() {
         return filterCategoryIds.includes(product.data.category.id);
       });
 
+      setAreFiltersCleared(false);
       return setProducts(filteredProducts);
     }
 
@@ -83,6 +85,8 @@ function ProductList() {
           <CategoryFilters
             categoryFilters={categoryFilters}
             setCategoryFilters={setCategoryFilters}
+            areFiltersCleared={areFiltersCleared}
+            setAreFiltersCleared={setAreFiltersCleared}
             isLoadingCategories={isLoadingCategories}
           /> :
           <LoaderSpinner title="Category Filters" />
