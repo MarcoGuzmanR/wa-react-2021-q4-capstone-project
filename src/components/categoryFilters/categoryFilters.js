@@ -35,7 +35,9 @@ function CategoryFilters(props) {
     <div className={styles.container}>
       <h3 className={styles.title}>Filter by category</h3>
       {!areFiltersCleared &&
-        <button className="btn-secondary" type="button" onClick={handleClearFilters}>Clear Filters</button>}
+        <button className="btn-clear" type="button" onClick={handleClearFilters}>
+          Clear Filters
+        </button>}
       <div>
         {categoryFilters.map((filter) => (
           <button

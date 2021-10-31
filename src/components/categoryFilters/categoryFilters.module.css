@@ -9,6 +9,7 @@
 }
 
 .filter--active {
+  border: 1px solid #daf1c4;
   background-color: #2b4757;
   color: #f1f4f6;
 }
