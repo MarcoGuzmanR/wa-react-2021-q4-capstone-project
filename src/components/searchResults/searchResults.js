@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './searchResults.module.scss'
+import styles from './searchResults.module.css'
 import SearchListProducts from '../../components/searchListProducts';
 import Pagination from '../common/pagination';
 import LoaderSpinner from '../common/loaderSpinner';
