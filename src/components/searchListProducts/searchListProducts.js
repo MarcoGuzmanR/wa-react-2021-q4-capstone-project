@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './searchListProducts.module.css'
 import ProductRow from '../productRow/productRow';
-import Pagination from '../common/pagination';
 import propTypes from 'prop-types';
 
 function SearchListProducts({ productsList, searchTerm }) {
@@ -14,7 +13,6 @@ function SearchListProducts({ productsList, searchTerm }) {
           {productsList.map((product) => (
             <ProductRow key={product.id} product={product} />
           ))}
-          <Pagination />
         </div> :
         <div className={styles['no-results']}>
           <h3>No products found for: <b>{searchTerm}</b></h3>

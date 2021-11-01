@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './searchResults.module.css'
+import styles from './searchResults.module.scss'
 import SearchListProducts from '../../components/searchListProducts';
+import Pagination from '../common/pagination';
 import LoaderSpinner from '../common/loaderSpinner';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
@@ -18,6 +19,11 @@ function SearchResults() {
 
   const { data, isLoadingProducts } = useCustomResponseAPI(propsCall);
   const [products, setProducts] = React.useState();
+  const [paginationControls, setPaginationControls] = React.useState(() => ({
+    page: 0,
+    totalPages: 0,
+    totalResultsSize: 0
+  }));
 
   React.useEffect(() => {
     if (isLoadingProducts) {
@@ -25,12 +31,20 @@ function SearchResults() {
     }
 
     setProducts(data.results);
+    setPaginationControls({
+      page: data.page,
+      totalPages: data.total_pages,
+      totalResultsSize: data.total_results_size
+    });
   }, [data, isLoadingProducts]);
 
   return (
     <div className={styles.container}>
       {!isLoadingProducts && products ?
-        <SearchListProducts productsList={products} searchTerm={searchTerm} /> :
+        <React.Fragment>
+          <SearchListProducts productsList={products} searchTerm={searchTerm} />
+          <Pagination setProducts={setProducts} paginationControls={paginationControls} />
+        </React.Fragment> :
         <LoaderSpinner title="Products" />
       }
     </div>

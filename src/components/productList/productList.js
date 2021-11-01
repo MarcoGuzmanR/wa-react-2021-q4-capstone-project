@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './productList.module.css';
 import ProductsGrid from '../productsGrid';
 import CategoryFilters from '../categoryFilters';
+import Pagination from '../common/pagination';
 import LoaderSpinner from '../common/loaderSpinner';
 
 import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
@@ -39,6 +40,11 @@ function ProductList() {
   const { data: allProducts, isLoadingProducts } = useCustomResponseAPI(propsProductsCall);
   const [categoryFilters, setCategoryFilters] = React.useState();
   const [products, setProducts] = React.useState();
+  const [paginationControls, setPaginationControls] = React.useState(() => ({
+    page: 0,
+    totalPages: 0,
+    totalResultsSize: 0
+  }));
   const [areFiltersCleared, setAreFiltersCleared] = React.useState(true);
 
   React.useEffect(() => {
@@ -57,6 +63,11 @@ function ProductList() {
     }
 
     setProducts(allProducts.results);
+    setPaginationControls({
+      page: allProducts.page,
+      totalPages: allProducts.total_pages,
+      totalResultsSize: allProducts.total_results_size
+    });
   }, [allProducts, isLoadingProducts]);
 
   React.useEffect(() => {
@@ -75,6 +86,7 @@ function ProductList() {
       return setProducts(filteredProducts);
     }
 
+    setAreFiltersCleared(true);
     setProducts(allProducts.results);
   }, [allProducts, categoryFilters]);
 
@@ -94,7 +106,10 @@ function ProductList() {
       </aside>
       <section>
         {!isLoadingProducts && products ?
-          <ProductsGrid title="Products" productsList={products} /> :
+          <React.Fragment>
+            <ProductsGrid title="Products" productsList={products} />
+            <Pagination setProducts={setProducts} paginationControls={paginationControls} />
+          </React.Fragment> :
           <LoaderSpinner title="Products" />
         }
       </section>

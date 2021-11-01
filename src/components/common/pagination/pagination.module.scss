@@ -10,15 +10,15 @@
   font-size: 1.2rem;
   padding: 16px 32px;
   transition: background-color .3s;
-}
-  
-.pagination a.active {
-  background-color: #2b4757;
-  color: #f1f4f6;
-  font-weight: bold;
-}
 
-.pagination a:hover:not(.active) {
-  color: #467590;
-  background-color: #daf1c4;
+  &.active {
+    background-color: #2b4757;
+    color: #f1f4f6;
+    font-weight: bold;
+  }
+
+  &:hover:not(.active) {
+    color: #467590;
+    background-color: #daf1c4;
+  }
 }
