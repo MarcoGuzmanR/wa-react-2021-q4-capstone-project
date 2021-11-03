@@ -13,6 +13,8 @@ import Footer from './layout/footer';
 import SearchResults from './components/searchResults';
 import ProductList from './components/productList';
 import ProductDetail from './components/productDetail';
+import ShoppingCart from './components/shoppingCart';
+import Checkout from './components/checkout';
 
 import BestHomeProvider from './context/provider';
 
@@ -31,6 +33,12 @@ function App() {
             </Route>
             <Route path={'/product/:productId'}>
               <ProductDetail />
+            </Route>
+            <Route path={'/cart'}>
+              <ShoppingCart />
+            </Route>
+            <Route path={'/checkout'}>
+              <Checkout />
             </Route>
             <Route path={['/', '/home']}>
               <Home />

@@ -7,4 +7,13 @@ function useCategories() {
   return { categoriesList, categoriesMap, isLoading };
 }
 
-export { useCategories };
+function useShoppingCart() {
+  const { cartList, setCartList } = React.useContext(BestHomeContext);
+
+  return { cartList, setCartList };
+}
+
+export {
+  useCategories,
+  useShoppingCart
+};
