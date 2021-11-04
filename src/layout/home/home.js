@@ -1,41 +1,49 @@
 import React from 'react';
 import styles from './home.module.css';
-import propTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import BannerSlider from '../../components/bannerSlider';
 import ProductCategories from '../../components/productCategories';
 import FeaturedProducts from '../../components/productsGrid';
+import LoaderSpinner from '../../components/common/loaderSpinner';
 
-import bannersRawData from '../../mocks/en-us/featured-banners.json';
-import productCategoriesRawData from '../../mocks/en-us/product-categories.json';
-import featuredProductsRawData from '../../mocks/en-us/featured-products.json';
+import { useCustomResponseAPI } from '../../hooks/useCustomResponseAPI';
 
-function Home({ setIsHomePage }) {
-  const { results: mockedBanners }    = bannersRawData;
-  const { results: mockedCategories } = productCategoriesRawData;
-  const { results: mockedProducts }   = featuredProductsRawData;
+const propsCall = {
+  documentType: 'product',
+  documentTags: ['Featured'],
+  pageSize: 16
+};
 
-  function handleSetIsHomePage() {
-    setIsHomePage(false);
-  }
+function Home() {
+  const { data, isLoading } = useCustomResponseAPI(propsCall);
+  const [featuredProducts, setFeaturedProducts] = React.useState();
+
+  React.useEffect(() => {
+    if (!isLoading) {
+      setFeaturedProducts(data.results);
+    }
+  }, [data, isLoading]);
 
   return (
     <div className={styles['main__container']}>
-      <BannerSlider bannersList={mockedBanners} />
-      <ProductCategories categoriesList={mockedCategories} />
-      <FeaturedProducts title="Featured Products" productsList={mockedProducts} />
+      <BannerSlider />
+      <ProductCategories />
+
+      {!isLoading && featuredProducts ?
+        <FeaturedProducts title="Featured Products" productsList={featuredProducts} /> :
+        <LoaderSpinner title="Featured Products" />
+      }
 
       <div className={styles['view-products__container']}>
-        <button className="btn-secondary" type="button" onClick={handleSetIsHomePage}>
-          View all products
-        </button>
+        <Link to="/products">
+          <button className="btn-secondary" type="button">
+            View all products
+          </button>
+        </Link>
       </div>
     </div>
   );
 }
-
-Home.propTypes = {
-  setIsHomePage: propTypes.func.isRequired,
-};
 
 export default Home;

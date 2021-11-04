@@ -1,22 +1,24 @@
 import React from 'react';
 import styles from './categoryCard.module.css'
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
 function CategoryCard({ category }) {
   const { data } = category;
   const { main_image } = data;
+  const [categorySlug] = category.slugs || {};
 
   return (
-    <div className={styles.container}>
-      <a href={category.href}>
+    <Link to={`/products?category=${categorySlug}`}>
+      <div className={styles.container}>
         <img
           src={main_image.url}
           alt={main_image.alt}
           height={main_image.dimensions.height / 3 }
           width={main_image.dimensions.width / 3} />
         <h3>{data.name}</h3>
-      </a>
-    </div>
+      </div>
+    </Link>
   );
 }
 

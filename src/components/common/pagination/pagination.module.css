@@ -11,7 +11,7 @@
   padding: 16px 32px;
   transition: background-color .3s;
 }
-  
+
 .pagination a.active {
   background-color: #2b4757;
   color: #f1f4f6;

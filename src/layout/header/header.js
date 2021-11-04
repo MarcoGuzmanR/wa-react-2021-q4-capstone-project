@@ -1,22 +1,30 @@
 import React from 'react';
 import styles from './header.module.css';
 import cartIcon from '../../assets/images/cart-15-48.png'
-import propTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
-function Header({ setIsHomePage }) {
-  function handleSetIsHomePage() {
-    setIsHomePage(true);
+function Header() {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  function handleSearchTerm(event) {
+    setSearchTerm(event.target.value);
   }
 
   return (
     <header className={styles.container}>
       <div className={styles['container__menu']}>
-        <div className={styles['logo__name-container']} onClick={handleSetIsHomePage}>
-          <h2 className={styles['logo__name']}>BestHome</h2>
+        <div className={styles['logo__name-container']}>
+          <Link to="/">
+            <h2 className={styles['logo__name']}>BestHome</h2>
+          </Link>
         </div>
         <nav className={styles['nav-container']}>
           <ul>
-            <li><a href="/" onClick={handleSetIsHomePage}>Home</a></li>
+            <li>
+              <Link to="/">
+                <h3>Home</h3>
+              </Link>
+            </li>
             <li><a href="/">About</a></li>
           </ul>
         </nav>
@@ -25,25 +33,22 @@ function Header({ setIsHomePage }) {
         </div>
       </div>
       <div className={styles['container__search']}>
-        <form>
-          <input
-            className={styles['search-product']}
-            type="search"
-            placeholder="Search products"
-          />
+        <input
+          className={styles['search-product']}
+          type="search"
+          onChange={handleSearchTerm}
+          placeholder="Search products"
+        />
+        <Link to={`search?q=${searchTerm}`}>
           <input
             className="btn-primary"
-            type="submit"
+            type="button"
             value="Go"
           />
-        </form>
+        </Link>
       </div>
     </header>
   );
 }
-
-Header.propTypes = {
-  setIsHomePage: propTypes.func.isRequired,
-};
 
 export default Header;

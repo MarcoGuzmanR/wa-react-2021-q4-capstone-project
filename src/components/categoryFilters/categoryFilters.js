@@ -6,7 +6,9 @@ function CategoryFilters(props) {
   const {
       categoryFilters,
       setCategoryFilters,
-      isLoadingProducts
+      areFiltersCleared,
+      setAreFiltersCleared,
+      isLoadingCategories
   } = props;
 
   function handleFilterChange(filter) {
@@ -18,21 +20,38 @@ function CategoryFilters(props) {
     });
   }
 
+  function handleClearFilters() {
+    setAreFiltersCleared(true);
+    setCategoryFilters(prevFilters => {
+      return prevFilters.map((prevFilter) => {
+        return {
+          ...prevFilter, activeFilter: false
+        }
+      });
+    });
+  }
+
   return (
     <div className={styles.container}>
-      <h3>Filter by category</h3>
-      {categoryFilters.map((filter) => (
-        <button
-          key={filter.id}
-          className={
-            filter.activeFilter ?
-            `btn-filter ${styles['filter--active']}` :
-            `btn-filter ${styles['filter--inactive']}` }
-          disabled={isLoadingProducts}
-          onClick={() => handleFilterChange(filter)}>
-          {filter.name}
-        </button>
-      ))}
+      <h3 className={styles.title}>Filter by category</h3>
+      {!areFiltersCleared &&
+        <button className="btn-clear" type="button" onClick={handleClearFilters}>
+          Clear Filters
+        </button>}
+      <div>
+        {categoryFilters.map((filter) => (
+          <button
+            key={filter.id}
+            className={
+              filter.activeFilter ?
+              `btn-action ${styles['filter--active']}` :
+              `btn-action ${styles['filter--inactive']}` }
+            disabled={isLoadingCategories}
+            onClick={() => handleFilterChange(filter)}>
+            {filter.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
@@ -40,6 +59,8 @@ function CategoryFilters(props) {
 CategoryFilters.propTypes = {
   categoryFilters: propTypes.array.isRequired,
   setCategoryFilters: propTypes.func.isRequired,
+  areFiltersCleared: propTypes.bool.isRequired,
+  setAreFiltersCleared: propTypes.func.isRequired,
   isLoadingProducts: propTypes.bool
 };
 
