@@ -14,17 +14,21 @@ function CartItem({ item }) {
     setNumberItems(parseInt(event.target.value));
 
     setCartList(prevCartList => {
-      const findItem = prevCartList.filter((cartItem) => cartItem.id === item.id);
+      return prevCartList.map((cartItem) => {
+        return cartItem.id === item.id
+        ? {
+            ...cartItem,
+            quantity: parseInt(event.target.value),
+            subtotal: cartItem.price * parseInt(event.target.value)
+          }
+        : cartItem
+      });
+    });
+  }
 
-      const itemToUpdate = {
-        ...findItem,
-        quantity: parseInt(event.target.value)
-      };
-
-      return [
-        ...prevCartList,
-        itemToUpdate
-      ];
+  function handleRemoveFromCart() {
+    setCartList(prevCartList => {
+      return prevCartList.filter((cartItem) => cartItem.id !== item.id);
     });
   }
 
@@ -42,7 +46,6 @@ function CartItem({ item }) {
         <div className={styles['details-container']}>
           <h3>{item.name}</h3>
           <p><b>Category: </b>{categoriesMap?.get(item.category.id)}</p>
-          <p><b>Unit Price: </b>${item.price.toFixed(2)}</p>
           <p><b>Description: </b>{item.short_description}</p>
           <p>
               <input
@@ -55,7 +58,16 @@ function CartItem({ item }) {
                 value={numberItems}
               />
           </p>
-          <input className={`btn-cart ${styles['btn-cart--custom']}`} type="button" value="Remove From Cart" />
+        </div>
+        <div className={styles['price-container']}>
+          <p><b>Unit Price: </b>${item.price.toFixed(2)}</p>
+          <p><b>Subtotal: </b>${item.subtotal.toFixed(2)}</p>
+          <input
+            className={`btn-cart ${styles['btn-cart--custom']}`}
+            type="button"
+            onClick={handleRemoveFromCart}
+            value="Remove From Cart"
+          />
         </div>
       </div>
       <hr />

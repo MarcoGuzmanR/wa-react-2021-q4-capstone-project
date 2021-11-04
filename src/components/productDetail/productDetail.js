@@ -36,7 +36,8 @@ function ProductDetail() {
       const productToAdd = {
         ...product.data,
         id: product.id,
-        quantity: numberItems
+        quantity: numberItems,
+        subtotal: numberItems * product.data.price
       };
 
       return [
