@@ -35,7 +35,6 @@ function ShoppingCart() {
           <Link to="/checkout">
             <input className="btn-secondary" type="button" value="Proceed to checkout" />
           </Link>
-
         </div>:
         <div>
           <h2>Your cart is empty!</h2>

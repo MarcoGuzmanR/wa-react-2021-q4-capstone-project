@@ -1,1 +1,9 @@
-.container {}
+.container {
+  background-color: #467590;
+  min-height: 800px;
+}
+
+.main-checkout {
+  margin: 0 10%;
+  padding: 2% 0;
+}
