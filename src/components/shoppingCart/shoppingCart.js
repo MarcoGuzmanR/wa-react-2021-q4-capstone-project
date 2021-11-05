@@ -36,11 +36,11 @@ function ShoppingCart() {
             <div className={styles['bottom-content']}>
               <h3>Total: ${cartTotal.toFixed(2)}</h3>
               <Link to="/checkout">
-                <input
+                <button
                   className={`btn-cart ${styles['btn-cart--custom']}`}
-                  type="button"
-                  value="Proceed to checkout"
-                />
+                  type="button">
+                  Proceed to checkout
+                </button>
               </Link>
             </div>
           </div>:
