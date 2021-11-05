@@ -48,10 +48,12 @@ function CartItem({ item }) {
           <p><b>Category: </b>{categoriesMap?.get(item.category.id)}</p>
           <p><b>Description: </b>{item.short_description}</p>
           <p>
+            <label><b>Quantity: </b></label>
               <input
                 className={styles['number-items--input']}
                 name="numberItems"
                 type="number"
+                min="1"
                 max={item.stock}
                 disabled={item.stock === 0}
                 onChange={(event) => handleQuantityChange(event)}
@@ -63,7 +65,7 @@ function CartItem({ item }) {
           <p><b>Unit Price: </b>${item.price.toFixed(2)}</p>
           <p><b>Subtotal: </b>${item.subtotal.toFixed(2)}</p>
           <input
-            className={`btn-cart ${styles['btn-cart--custom']}`}
+            className="btn-clear"
             type="button"
             onClick={handleRemoveFromCart}
             value="Remove From Cart"

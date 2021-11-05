@@ -34,7 +34,9 @@ function Header() {
         <div className={styles['cart-container']}>
           <Link to="/cart">
             <img src={cartIcon} alt="Shopping Cart" />
-            <span>{ cartList.length }</span>
+            <span className={styles['badge-count']}>
+              {cartList.length}
+            </span>
           </Link>
         </div>
       </div>

@@ -15,7 +15,7 @@ function ProductDetail() {
 
   const { data, isLoading } = useCustomResponseAPI(propsCall);
   const [product, setProduct] = React.useState();
-  const [numberItems, setNumberItems] = React.useState(0);
+  const [numberItems, setNumberItems] = React.useState(1);
 
   React.useEffect(() => {
     if (isLoading) {
@@ -91,6 +91,7 @@ function ProductDetail() {
                 className={styles['number-items--input']}
                 name="numberItems"
                 type="number"
+                min="1"
                 max={product.data.stock}
                 disabled={product.data.stock === 0}
                 onChange={(event) => handleQuantityChange(event)}

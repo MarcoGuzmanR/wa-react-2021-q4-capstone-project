@@ -20,25 +20,35 @@ function ShoppingCart() {
 
   React.useEffect(() => {
     setCartTotal(calculateTotal(cartList));
-  }, [cartList]);
+  }, [cartList,setCartTotal]);
 
   return (
     <div className={styles.container}>
-      {cartList.length ?
-        <div className={styles['cart-container']}>
-          {cartList.map((item) => (
-            <CartItem key={item.id} item={item} />
-          ))}
-
-          <h3>Total: ${cartTotal.toFixed(2)}</h3>
-          <Link to="/checkout">
-            <input className="btn-secondary" type="button" value="Proceed to checkout" />
-          </Link>
-        </div>:
-        <div>
-          <h2>Your cart is empty!</h2>
-        </div>
-      }
+      <div className={styles['main-shopping-cart']}>
+        <h1>Shopping Cart List</h1>
+        {cartList.length ?
+          <div className={styles['cart-container']}>
+            <div className={styles['cart-list']}>
+              {cartList.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
+            <div className={styles['bottom-content']}>
+              <h3>Total: ${cartTotal.toFixed(2)}</h3>
+              <Link to="/checkout">
+                <input
+                  className={`btn-cart ${styles['btn-cart--custom']}`}
+                  type="button"
+                  value="Proceed to checkout"
+                />
+              </Link>
+            </div>
+          </div>:
+          <div>
+            <h2>Your cart is empty!</h2>
+          </div>
+        }
+      </div>
     </div>
   );
 }
