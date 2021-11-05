@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './checkout.module.css'
+import { Link } from 'react-router-dom';
 
 import { useShoppingCart } from '../../hooks/useBestHomeContext';
 
 function Checkout() {
-  const { cartList } = useShoppingCart();
+  const { cartList, cartTotal } = useShoppingCart();
 
   function handleSubmitCustomerData() {}
 
@@ -36,17 +37,19 @@ function Checkout() {
           {cartList.map((item) => {
             return (
               <p key={item.id}>
-                <h3>Product: {item.name}</h3>
-                <h3>Quantity: {item.quantity}</h3>
-                <h3>Price: {item.price}</h3>
-                <h3>Subtotal: {item.subtotal}</h3>
+                <label>Product: {item.name}</label>
+                <label>Quantity: {item.quantity}</label>
+                <label>Price: {item.price}</label>
+                <label>Subtotal: {item.subtotal}</label>
               </p>
             );
           })}
         </div>
         <div className={styles['bottom-container']}>
-          <h3>Total:</h3>
-          <button type="button" className="btn-secondary">Go Back to Cart</button>
+          <h3>Total: ${cartTotal.toFixed(2)}</h3>
+          <Link to="/cart">
+            <button type="button" className="btn-secondary">Go Back to Cart</button>
+          </Link>
           <button type="button" className="btn-cart">Place Order</button>
         </div>
       </div>

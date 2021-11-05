@@ -21,6 +21,7 @@ function BestHomeProvider(props) {
   const [categoriesList, setCategoriesList] = React.useState([]);
   const [categoriesMap, setCategoriesMap] = React.useState();
   const [cartList, setCartList] = React.useState([]);
+  const [cartTotal, setCartTotal] = React.useState(0);
 
   React.useEffect(() => {
     if (isLoading) {
@@ -33,10 +34,12 @@ function BestHomeProvider(props) {
 
   const contextValues = {
     cartList,
+    cartTotal,
     categoriesList,
     categoriesMap,
     isLoading,
-    setCartList
+    setCartList,
+    setCartTotal
   };
 
   return (

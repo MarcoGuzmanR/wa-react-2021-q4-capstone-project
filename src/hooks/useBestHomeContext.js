@@ -8,9 +8,19 @@ function useCategories() {
 }
 
 function useShoppingCart() {
-  const { cartList, setCartList } = React.useContext(BestHomeContext);
+  const {
+    cartList,
+    cartTotal,
+    setCartList,
+    setCartTotal
+  } = React.useContext(BestHomeContext);
 
-  return { cartList, setCartList };
+  return {
+    cartList,
+    cartTotal,
+    setCartList,
+    setCartTotal
+  };
 }
 
 export {

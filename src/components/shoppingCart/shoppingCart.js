@@ -16,8 +16,7 @@ function calculateTotal(items) {
 }
 
 function ShoppingCart() {
-  const { cartList } = useShoppingCart();
-  const [cartTotal, setCartTotal] = React.useState(calculateTotal(cartList));
+  const { cartList, cartTotal, setCartTotal } = useShoppingCart();
 
   React.useEffect(() => {
     setCartTotal(calculateTotal(cartList));
