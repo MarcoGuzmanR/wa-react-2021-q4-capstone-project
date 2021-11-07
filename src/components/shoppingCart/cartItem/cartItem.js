@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './cartItem.module.css'
 import propTypes from 'prop-types';
 
-import { useCategories, useShoppingCart } from '../../hooks/useBestHomeContext';
+import { useCategories, useShoppingCart } from '../../../hooks/useBestHomeContext';
 
 function CartItem({ item }) {
   const { categoriesMap } = useCategories();

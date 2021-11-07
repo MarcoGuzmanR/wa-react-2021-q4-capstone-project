@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './searchResults.module.css'
-import SearchListProducts from '../../components/searchListProducts';
+import SearchListProducts from './searchListProducts'
 import Pagination from '../common/pagination';
 import LoaderSpinner from '../common/loaderSpinner';
 

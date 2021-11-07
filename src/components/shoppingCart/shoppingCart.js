@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './shoppingCart.module.css'
 import { Link } from 'react-router-dom';
-import CartItem from '../cartItem';
+import CartItem from './cartItem';
 
 import { useShoppingCart } from '../../hooks/useBestHomeContext';
 
