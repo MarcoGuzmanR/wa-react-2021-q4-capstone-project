@@ -20,7 +20,7 @@ function ShoppingCart() {
 
   React.useEffect(() => {
     setCartTotal(calculateTotal(cartList));
-  }, [cartList,setCartTotal]);
+  }, [cartList, setCartTotal]);
 
   return (
     <div className={styles.container}>

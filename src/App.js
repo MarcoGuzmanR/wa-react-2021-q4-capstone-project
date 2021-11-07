@@ -6,6 +6,8 @@ import {
   Route
 } from 'react-router-dom';
 
+import ErrorBoundary from './components/errorBoundary'
+
 import Header from './layout/header';
 import Home from './layout/home';
 import Footer from './layout/footer';
@@ -24,26 +26,28 @@ function App() {
       <Router>
         <BestHomeProvider>
           <Header />
-          <Switch>
-            <Route path={'/search'}>
-              <SearchResults />
-            </Route>
-            <Route path={['/products', `/products?category`]}>
-              <ProductList />
-            </Route>
-            <Route path={'/product/:productId'}>
-              <ProductDetail />
-            </Route>
-            <Route path={'/cart'}>
-              <ShoppingCart />
-            </Route>
-            <Route path={'/checkout'}>
-              <Checkout />
-            </Route>
-            <Route path={['/', '/home']}>
-              <Home />
-            </Route>
-          </Switch>
+          <ErrorBoundary>
+            <Switch>
+              <Route path={'/search'}>
+                <SearchResults />
+              </Route>
+              <Route path={['/products', `/products?category`]}>
+                <ProductList />
+              </Route>
+              <Route path={'/product/:productId'}>
+                <ProductDetail />
+              </Route>
+              <Route path={'/cart'}>
+                <ShoppingCart />
+              </Route>
+              <Route path={'/checkout'}>
+                <Checkout />
+              </Route>
+              <Route path={['/', '/home']}>
+                <Home />
+              </Route>
+            </Switch>
+          </ErrorBoundary>
         </BestHomeProvider>
       </Router>
       <Footer />
