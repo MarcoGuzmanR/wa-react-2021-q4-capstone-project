@@ -1,3 +1,12 @@
+.badge-count {
+  background-color: #daf1c4;
+  border: 1px solid #2b4757;
+  border-radius: 5px;
+  color: #2b4757;
+  padding: 0px 5px;
+  text-decoration: none;
+}
+
 .container {
   background-color: #2b4757;
 }
@@ -44,12 +53,3 @@
 .nav-container {
   flex: 1;
 }
-
-.badge-count {
-  background-color: #daf1c4;
-  border: 1px solid #2b4757;
-  border-radius: 5px;
-  color: #2b4757;
-  padding: 0px 5px;
-  text-decoration: none;
-};
