@@ -1,0 +1,22 @@
+.customer-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer-form p {
+  font-size: 1.3rem;
+}
+
+.customer-form-input {
+  background-color: #f1f4f6;
+  border: none;
+  color: #213744;
+  font-size: 1.2rem;
+  margin: 0 1%;
+  padding: 0.35%;
+  width: 75%;
+}
+
+.form-column {
+  width: 100%;
+}

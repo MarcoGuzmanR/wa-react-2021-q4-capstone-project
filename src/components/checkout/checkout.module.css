@@ -25,31 +25,7 @@
   padding: 20px;
 }
 
-.customer-form p {
-  font-size: 1.3rem;
-}
-
 .main-checkout {
   margin: 0 10%;
   padding: 2% 0;
-}
-
-.customer-form-input {
-  background-color: #f1f4f6;
-  border: none;
-  color: #213744;
-  font-size: 1.2rem;
-  margin: 0 1%;
-  padding: 0.35%;
-  width: 25%;
-}
-
-.order-item-row {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.order-item-row p {
-  font-size: 1.4rem;
 }
