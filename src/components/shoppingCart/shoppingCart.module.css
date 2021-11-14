@@ -1,0 +1,20 @@
+.btn-cart--custom {
+  font-size: 1.3rem;
+  padding: 20px;
+}
+
+.container {
+  background-color: #467590;
+  min-height: 800px;
+}
+
+.bottom-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-shopping-cart {
+  margin: 0 10%;
+  padding: 2% 0;
+}

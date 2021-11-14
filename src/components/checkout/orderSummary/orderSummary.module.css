@@ -1,0 +1,9 @@
+.order-item-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-item-row p {
+  font-size: 1.4rem;
+}

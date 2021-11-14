@@ -1,0 +1,34 @@
+.btn-cart--custom {
+  padding: 1.5%;
+}
+
+.details-container {
+  flex: 5;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.item-row {
+  display: flex;
+  padding: 2% 0;
+}
+
+.number-items--input {
+  background-color: #f1f4f6;
+  border: none;
+  color: #467590;
+  font-size: 1.2rem;
+  margin: 0 2%;
+  text-align: center;
+  width: 10%;
+}
+
+.price-container {
+  margin: auto;
+}
+
+.price-container p {
+  font-size: 1.3rem;
+}

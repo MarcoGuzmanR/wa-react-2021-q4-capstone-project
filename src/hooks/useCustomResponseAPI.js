@@ -22,14 +22,14 @@ export function useCustomResponseAPI({ searchTerm, productId, documentType, docu
     isLoading: true,
   }));
 
+  const queryParams = buildQueryParams(searchTerm, productId, documentType, documentTags, pageSize);
+
   useEffect(() => {
     if (!apiRef || isApiMetadataLoading) {
       return () => {};
     }
 
     const controller = new AbortController();
-
-    const queryParams = buildQueryParams(searchTerm, productId, documentType, documentTags, pageSize);
 
     async function getResponse() {
       try {
@@ -56,7 +56,7 @@ export function useCustomResponseAPI({ searchTerm, productId, documentType, docu
     return () => {
       controller.abort();
     };
-  }, [apiRef, documentType, isApiMetadataLoading, pageSize, productId, searchTerm]);
+  }, [apiRef, isApiMetadataLoading, queryParams ]);
 
   return response;
 }

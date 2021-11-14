@@ -1,9 +1,18 @@
+.badge-count {
+  background-color: #daf1c4;
+  border: 1px solid #2b4757;
+  border-radius: 5px;
+  color: #2b4757;
+  padding: 0px 5px;
+  text-decoration: none;
+}
+
 .container {
   background-color: #2b4757;
 }
 
 .cart-container {
-  margin-right: 4%;
+  margin-right: 6%;
 }
 
 .container__menu {

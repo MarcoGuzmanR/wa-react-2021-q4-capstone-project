@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './searchListProducts.module.css'
-import ProductRow from '../productRow/productRow';
+import styles from './searchListProducts.module.css';
+import ProductRow from '../productRow';
 import propTypes from 'prop-types';
 
 function SearchListProducts({ productsList, searchTerm }) {

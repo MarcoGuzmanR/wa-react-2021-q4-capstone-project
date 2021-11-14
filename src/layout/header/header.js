@@ -3,7 +3,10 @@ import styles from './header.module.css';
 import cartIcon from '../../assets/images/cart-15-48.png'
 import { Link } from "react-router-dom";
 
+import { useShoppingCart } from '../../hooks/useBestHomeContext';
+
 function Header() {
+  const { cartList } = useShoppingCart();
   const [searchTerm, setSearchTerm] = React.useState('');
 
   function handleSearchTerm(event) {
@@ -29,7 +32,12 @@ function Header() {
           </ul>
         </nav>
         <div className={styles['cart-container']}>
-          <img src={cartIcon} alt="Shopping Cart" />
+          <Link to="/cart">
+            <img src={cartIcon} alt="Shopping Cart" />
+            <span className={styles['badge-count']}>
+              {cartList.length}
+            </span>
+          </Link>
         </div>
       </div>
       <div className={styles['container__search']}>

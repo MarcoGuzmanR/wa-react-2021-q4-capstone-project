@@ -3,11 +3,12 @@ import styles from './productRow.module.css'
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import { useCategories } from '../../hooks/useBestHomeContext';
+import { useCategories } from '../../../hooks/useBestHomeContext';
 
 function ProductRow({ product }) {
   const { categoriesMap } = useCategories();
 
+  console.log('Here');
   return (
     <React.Fragment>
       <div className={styles['product-row']}>

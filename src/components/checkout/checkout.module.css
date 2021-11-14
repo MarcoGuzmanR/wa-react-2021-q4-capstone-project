@@ -1,0 +1,31 @@
+.container {
+  background-color: #467590;
+  min-height: 800px;
+}
+
+.bottom-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-container {
+  display: flex;
+}
+
+.btn-checkout--custom {
+  font-size: 1.3rem;
+  padding: 20px;
+}
+
+.btn-checkout--custom-back {
+  font-size: 1.3rem;
+  margin: 0;
+  margin-right: 20px;
+  padding: 20px;
+}
+
+.main-checkout {
+  margin: 0 10%;
+  padding: 2% 0;
+}
