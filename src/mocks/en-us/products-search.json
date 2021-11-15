@@ -1,0 +1,382 @@
+{
+    "page": 1,
+    "results_per_page": 20,
+    "results_size": 3,
+    "total_results_size": 3,
+    "total_pages": 1,
+    "next_page": null,
+    "prev_page": null,
+    "results": [
+      {
+        "id": "YWIgaRIAACsAywzl",
+        "uid": null,
+        "url": null,
+        "type": "product",
+        "href": "https://wizeline-academy.cdn.prismic.io/api/v2/documents/search?ref=YXc6vhIAACsAyYIc&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YWIgaRIAACsAywzl%22%29+%5D%5D",
+        "tags": [
+          "Bedroom",
+          "Bed"
+        ],
+        "first_publication_date": "2021-10-09T23:17:27+0000",
+        "last_publication_date": "2021-10-10T02:24:47+0000",
+        "slugs": [
+          "chesterfield-king-size-bed-gray",
+          "cama-chesterfield-king-size-gris"
+        ],
+        "linked_documents": [],
+        "lang": "en-us",
+        "alternate_languages": [
+          {
+            "id": "YWIfYhIAACsAywhT",
+            "type": "product",
+            "lang": "es-mx"
+          }
+        ],
+        "data": {
+          "name": "Chesterfield King Size Bed Gray",
+          "sku": "1085189456",
+          "category": {
+            "id": "YWHviRIAACsAyjP3",
+            "type": "category",
+            "tags": [],
+            "slug": "furniture",
+            "lang": "en-us",
+            "first_publication_date": "2021-10-09T23:34:39+0000",
+            "last_publication_date": "2021-10-12T23:30:58+0000",
+            "link_type": "Document",
+            "isBroken": false
+          },
+          "mainimage": {
+            "dimensions": {
+              "width": 696,
+              "height": 900
+            },
+            "alt": "Chesterfield King Size Bed Gray",
+            "copyright": null,
+            "url": "https://images.prismic.io/wizeline-academy/8c57b556-38eb-47fd-af04-a47421d0020a_1.webp?auto=compress,format"
+          },
+          "short_description": "Our Chesterfield collection is built for superior comfort. The headboard is detailed with deep button tufts and decorative bronze rivets on each side. Expertly crafted with a kiln-dried hardwood frame.",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Our Chesterfield collection is built for superior comfort. The headboard is detailed with deep button tufts and decorative bronze rivets on each side. Expertly crafted with a kiln-dried hardwood frame. The headboard is padded and upholstered. Exposed legs have a hand-applied Espresso finish. Adjustable levelers add stability on uneven surfaces. The headboard is guaranteed to fit our PB metal boxspring (sold separately) using the headboard hardware (included).",
+              "spans": []
+            }
+          ],
+          "specs": [
+            {
+              "spec_name": "Product Height",
+              "spec_value": "1.32 m"
+            },
+            {
+              "spec_name": "Product Width",
+              "spec_value": "2.13 m"
+            },
+            {
+              "spec_name": "Color",
+              "spec_value": "Gray"
+            },
+            {
+              "spec_name": "Material",
+              "spec_value": "Cloth"
+            },
+            {
+              "spec_name": "Weight",
+              "spec_value": "91.62 kg"
+            }
+          ],
+          "images": [
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/8c57b556-38eb-47fd-af04-a47421d0020a_1.webp?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/872f4706-fa78-4243-9ba2-017c93de2a48_2.jpeg?auto=compress,format"
+              }
+            }
+          ],
+          "stock": 4,
+          "price": 2317.37
+        }
+      },
+      {
+        "id": "YWJI7hIAACkAy8Cv",
+        "uid": null,
+        "url": null,
+        "type": "product",
+        "href": "https://wizeline-academy.cdn.prismic.io/api/v2/documents/search?ref=YXc6vhIAACsAyYIc&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YWJI7hIAACkAy8Cv%22%29+%5D%5D",
+        "tags": [
+          "Living Room",
+          "Sofa"
+        ],
+        "first_publication_date": "2021-10-10T01:59:13+0000",
+        "last_publication_date": "2021-10-10T02:31:47+0000",
+        "slugs": [
+          "chesterfield-sofa-dark-brown",
+          "sofa-chesterfield-cafe-obscuro"
+        ],
+        "linked_documents": [],
+        "lang": "en-us",
+        "alternate_languages": [
+          {
+            "id": "YWJIfhIAACkAy77B",
+            "type": "product",
+            "lang": "es-mx"
+          }
+        ],
+        "data": {
+          "name": "Chesterfield Sofa Dark Brown",
+          "sku": "1078230319",
+          "category": {
+            "id": "YWHviRIAACsAyjP3",
+            "type": "category",
+            "tags": [],
+            "slug": "furniture",
+            "lang": "en-us",
+            "first_publication_date": "2021-10-09T23:34:39+0000",
+            "last_publication_date": "2021-10-12T23:30:58+0000",
+            "link_type": "Document",
+            "isBroken": false
+          },
+          "mainimage": {
+            "dimensions": {
+              "width": 696,
+              "height": 900
+            },
+            "alt": "Chesterfield Sofa Dark Brown",
+            "copyright": null,
+            "url": "https://images.prismic.io/wizeline-academy/83a43c82-a49c-4edc-b2e9-743e41a9849a_1.webp?auto=compress,format"
+          },
+          "short_description": "With its cozy arms and deeply padded upholstery, the Chesterfield collection is synonymous with comfort. Our leather sofas retain all the fine points of the Edwardian originals, creating the perfect furniture for relaxation.",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "With its cozy arms and deeply padded upholstery, the Chesterfield collection is synonymous with comfort. Our leather sofas retain all the fine points of the Edwardian originals, creating the perfect furniture for relaxation. Roller-shaped arms. The cushions are wrapped in polyester, which gives it a firmer feel. With reinforced corner pieces and box-and-tenon joints that give it exceptional structural integrity. Steel anti-sag springs provide cushioned support. The loose cushions are removable. Features button tufts along the arms and seat back. The removable legs are finished in brown. Adjustable levelers stabilize the cabinet even on uneven floors. The skin will clear and soften with use.",
+              "spans": []
+            }
+          ],
+          "specs": [
+            {
+              "spec_name": "Product Height",
+              "spec_value": "77.47 cm"
+            },
+            {
+              "spec_name": "Product width",
+              "spec_value": "2.18 m"
+            },
+            {
+              "spec_name": "Material",
+              "spec_value": "Leather"
+            },
+            {
+              "spec_name": "Care and Cleaning Instructions",
+              "spec_value": "Avoid direct sunlight and heat"
+            }
+          ],
+          "images": [
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/83a43c82-a49c-4edc-b2e9-743e41a9849a_1.webp?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/41374d14-fe39-493a-a38b-50f2d83f65b4_3.webp?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/b09c7fea-3169-4300-87fe-1d9b5943e90e_4.jpeg?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/0c9befff-bc9f-490b-aef2-780b0e576e89_5.webp?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/101604fe-2570-45b0-a919-ecee8392bb07_6.jpeg?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 940,
+                  "height": 1215
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/1d7ac3f8-5a9a-4a97-b8ef-21176e3838d4_7.jpeg?auto=compress,format"
+              }
+            }
+          ],
+          "stock": 3,
+          "price": 4007.15
+        }
+      },
+      {
+        "id": "YWIcKBIAACkAyvoX",
+        "uid": null,
+        "url": null,
+        "type": "product",
+        "href": "https://wizeline-academy.cdn.prismic.io/api/v2/documents/search?ref=YXc6vhIAACsAyYIc&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YWIcKBIAACkAyvoX%22%29+%5D%5D",
+        "tags": [
+          "Bedroom",
+          "Bed"
+        ],
+        "first_publication_date": "2021-10-09T23:18:58+0000",
+        "last_publication_date": "2021-10-10T02:23:09+0000",
+        "slugs": [
+          "dayton-king-size-bed",
+          "cama-dayton-king-size"
+        ],
+        "linked_documents": [],
+        "lang": "en-us",
+        "alternate_languages": [
+          {
+            "id": "YWIcRBIAACwAyvqa",
+            "type": "product",
+            "lang": "es-mx"
+          }
+        ],
+        "data": {
+          "name": "Dayton King Size Bed",
+          "sku": "1106718489",
+          "category": {
+            "id": "YWHviRIAACsAyjP3",
+            "type": "category",
+            "tags": [],
+            "slug": "furniture",
+            "lang": "en-us",
+            "first_publication_date": "2021-10-09T23:34:39+0000",
+            "last_publication_date": "2021-10-12T23:30:58+0000",
+            "link_type": "Document",
+            "isBroken": false
+          },
+          "mainimage": {
+            "dimensions": {
+              "width": 696,
+              "height": 900
+            },
+            "alt": "Dayton King Size Bed",
+            "copyright": null,
+            "url": "https://images.prismic.io/wizeline-academy/51c31221-d6ee-498f-af23-535d2cd9c432_1.webp?auto=compress,format"
+          },
+          "short_description": "Our Dayton platform bed is distinguished by a low profile and clean lines. Crafted from mango wood with incredible tonality and texture, the headboard features wooden planks arranged in a subtle chevron pattern.",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Our Chesterfield collection is built for superior comfort. The headboard is detailed with deep button tufts and decorative bronze rivets on each side. Expertly crafted with a kiln-dried hardwood frame. The headboard is padded and upholstered. Exposed legs have a hand-applied Espresso finish. Adjustable levelers add stability on uneven surfaces. The headboard is guaranteed to fit our PB metal boxspring (sold separately) using the headboard hardware (included).",
+              "spans": []
+            }
+          ],
+          "specs": [
+            {
+              "spec_name": "Color",
+              "spec_value": "Brown"
+            },
+            {
+              "spec_name": "Depth",
+              "spec_value": "210.82 cm"
+            },
+            {
+              "spec_name": "Product width",
+              "spec_value": "203.2 cm"
+            },
+            {
+              "spec_name": "Product height",
+              "spec_value": "134.62 cm"
+            },
+            {
+              "spec_name": "Collection",
+              "spec_value": "Dayton"
+            }
+          ],
+          "images": [
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/4a1dd90a-0ff6-490d-a225-bceae17c70ab_2.webp?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/f21bf188-25fe-43db-954d-7816eb170856_3.webp?auto=compress,format"
+              }
+            },
+            {
+              "image": {
+                "dimensions": {
+                  "width": 696,
+                  "height": 900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/wizeline-academy/11f8bce3-4656-4757-9d1b-2e82cc7bad64_4.jpeg?auto=compress,format"
+              }
+            }
+          ],
+          "stock": 3,
+          "price": 1448.34
+        }
+      }
+    ],
+    "version": "31acd9d",
+    "license": "This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/."
+  }
