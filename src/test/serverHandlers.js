@@ -1,6 +1,8 @@
 import { rest } from 'msw'
 import { API_BASE_URL } from '../utils/constants';
-import mockedCategories from '../mocks/es-mx/product-categories.json'
+import mockedCategories from '../mocks/en-us/product-categories.json'
+import mockedBanners from '../mocks/en-us/featured-banners.json'
+import mockedSearch from '../mocks/en-us/products-search.json'
 
 const productId = 1;
 const mockedProduct = {
@@ -159,6 +161,26 @@ const handlers = [
     )
   }),
 
+  rest.get(`${API_BASE_URL}/documents/search?ref=YXc6vhIAACsAyYIc&q=${encodeURIComponent(`[[fulltext(document, "chesterfield")]]`)}`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(mockedSearch),
+    )
+  }),
+
+  rest.get(`${API_BASE_URL}/documents/search?ref=YXc6vhIAACsAyYIc&q=${encodeURIComponent(`[[at(document.type, "product")]]`)}&q=${encodeURIComponent(`[[at(document.tags, ["Featured"])]]`)}`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(mockedSearch),
+    )
+  }),
+
+  rest.get(`${API_BASE_URL}/documents/search?ref=YXc6vhIAACsAyYIc&q=${encodeURIComponent(`[[at(document.type, "banner")]]`)}`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(mockedBanners),
+    )
+  }),
 ];
 
 export { handlers };
